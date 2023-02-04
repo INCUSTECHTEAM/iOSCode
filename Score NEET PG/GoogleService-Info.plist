@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>603724632036-jvt7hfcdejg5gev3ho1o9552eg04vkf6.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.603724632036-jvt7hfcdejg5gev3ho1o9552eg04vkf6</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>603724632036-nskj9jduokaj8dq77ugvun9t41ns82h3.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAVfqvn3qJcRE1Zp_jSgIVPAOi2dpFwesk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>603724632036</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.vongo.Score-MLE</string>
+	<key>PROJECT_ID</key>
+	<string>cutobot-365da</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cutobot-365da.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:603724632036:ios:66d8a48051373c3a1501f1</string>
+</dict>
+</plist>
