@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+
 class NotesQuizViewModel: ObservableObject {
     
     @Published var questions: [QuestionDetail]
@@ -16,13 +17,15 @@ class NotesQuizViewModel: ObservableObject {
     @Published var isQuestionAttempt: Bool = false
     @Published var goBack: Bool = false
     @Published var userAnswer: String?
-    var answeredCorrectly = [Int: Bool]()
+    var answeredCorrectly: [Int: Bool] = [:]
     
     init(questions: [QuestionDetail]) {
         self.questions = questions
         self.currentQuestion = self.questions.first
         
     }
+    
+    
     
     func nextQuestion() {
         if currentIndex < questions.count - 1 {
@@ -98,10 +101,13 @@ class NotesQuizViewModel: ObservableObject {
             }
         }
         
-        if correctAnswer.components(separatedBy: ", ").contains(self.userAnswer?.components(separatedBy: ".").first ?? "") {
+        if correctAnswer.components(separatedBy: ", ").contains(self.userAnswer ?? "") {
             return true
         }
         
+        if correctAnswer.components(separatedBy: ", ").contains(self.userAnswer?.components(separatedBy: ".").first ?? "") {
+            return true
+        }
         
         if let userAnswer = self.userAnswer, correctAnswer.components(separatedBy: ", ").contains(userAnswer) {
             return true

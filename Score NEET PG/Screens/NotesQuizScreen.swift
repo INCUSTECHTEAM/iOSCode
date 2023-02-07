@@ -13,13 +13,18 @@ struct NotesQuizScreen: View {
     
     let questions: [QuestionDetail]
     @ObservedObject private var vm: NotesQuizViewModel
-    let noQuestionsGoToNextNote: (_ isBookmark: Bool) -> Void
     
-    init(questions: [QuestionDetail], noQuestionsGoToNextNote: @escaping (_ isKnow: Bool) -> Void) {
+    var noteQuestionBookmarkStatus: (_ isBookmarked: Bool) -> Void
+    var saveQuiz: () -> Void
+    
+   
+    
+    init(questions: [QuestionDetail], noteQuestionBookmarkStatus: @escaping (_ isBookmarked: Bool) -> Void, saveQuiz: @escaping () -> Void) {
         self.questions = questions
-        self.noQuestionsGoToNextNote = noQuestionsGoToNextNote
-        self.vm = NotesQuizViewModel(questions: questions)
-       
+        self.vm = NotesQuizViewModel(questions: self.questions)
+        self.noteQuestionBookmarkStatus = noteQuestionBookmarkStatus
+        self.saveQuiz = saveQuiz
+        
         UIButton.appearance().isMultipleTouchEnabled = false
         UIButton.appearance().isExclusiveTouch = true
         UIView.appearance().isMultipleTouchEnabled = false
@@ -48,12 +53,16 @@ struct NotesQuizScreen: View {
                     
                     ButtonsView()
                     
-                    ExplationView()
-                        .padding()
-                        .background {
-                            RoundedRectangle(cornerRadius: 8)
-                                .foregroundColor(.lightBlue)
-                        }
+                    if vm.isQuestionAttempt {
+                        ExplationView()
+                            .padding()
+                            .background {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .foregroundColor(.lightBlue)
+                            }
+                    }
+                    
+                    
                 }
             }
             .padding(.horizontal)
@@ -62,7 +71,7 @@ struct NotesQuizScreen: View {
         }
         .onChange(of: vm.goBack, perform: { newValue in
             dismiss()
-            noQuestionsGoToNextNote(vm.setNoteBookmarkedStatus())
+            noteQuestionBookmarkStatus(vm.setNoteBookmarkedStatus())
         })
         .onChange(of: vm.userAnswer, perform: { newValue in
             if let _ = newValue {
@@ -76,7 +85,13 @@ struct NotesQuizScreen: View {
     func NavBar() -> some View {
         HStack {
             Button {
-                dismiss()
+                if vm.isQuestionAttempt {
+                    noteQuestionBookmarkStatus(vm.setNoteBookmarkedStatus())
+                    dismiss()
+                    saveQuiz()
+                } else {
+                    dismiss()
+                }
             } label: {
                 Image(systemName: "chevron.left")
                     .font(.title2)
@@ -280,11 +295,11 @@ struct NotesQuizScreen: View {
     }
 }
 
-struct NotesQuizScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        NotesQuizScreen(questions: [], noQuestionsGoToNextNote: { isBookmark in })
-    }
-}
+//struct NotesQuizScreen_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NotesQuizScreen(questions: [], delegate: <#NotesQuizDelegate?#>)
+//    }
+//}
 
 
 

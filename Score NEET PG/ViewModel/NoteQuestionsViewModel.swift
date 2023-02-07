@@ -28,11 +28,12 @@ class NoteQuestiosnViewModel: ObservableObject {
     
     @Published var noteQuestionDataModel: NoteQuestionDataModel = NoteQuestionDataModel()
     
-    
     func next(subjectId: String) {
         if noteQuestionDataModel.index + 1 < noteQuestionDataModel.questionIds.count {
-            noteQuestionDataModel.index += 1
-            getQuestion(subjectId: subjectId)
+            DispatchQueue.main.async {
+                self.noteQuestionDataModel.index += 1
+                self.getQuestion(subjectId: subjectId)
+            }
         } else {
             updateDataToServer(subjectId: subjectId) {
                 self.noteQuestionDataModel.isBack = true
@@ -42,8 +43,10 @@ class NoteQuestiosnViewModel: ObservableObject {
     
     func prev(subjectId: String) {
         if noteQuestionDataModel.index <= noteQuestionDataModel.questionIds.count {
-            noteQuestionDataModel.index -= 1
-            getQuestion(subjectId: subjectId)
+            DispatchQueue.main.async {
+                self.noteQuestionDataModel.index -= 1
+                self.getQuestion(subjectId: subjectId)
+            }
         }
     }
     
@@ -65,7 +68,7 @@ class NoteQuestiosnViewModel: ObservableObject {
             noteQuestionDataModel.bookmarkedQuestions.removeAll(where: { $0.id == data.id })
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
             self.next(subjectId: subjectId)
         }
         
@@ -76,7 +79,9 @@ class NoteQuestiosnViewModel: ObservableObject {
     
     
     func updateDataToServer(subjectId: String, completion: @escaping () -> Void) {
-        noteQuestionDataModel.isLoading = true
+        DispatchQueue.main.async {
+            self.noteQuestionDataModel.isLoading = true
+        }
         guard let phoneNumber = UserDefaults.standard.string(forKey: UserDetailsKey.mobileNumber) else { return }
         let request = NoteQuestionUpdateRequest(bookmarked: noteQuestionDataModel.bookmarkedQuestions,
                                                 known: noteQuestionDataModel.knownQuestions,
@@ -94,12 +99,15 @@ class NoteQuestiosnViewModel: ObservableObject {
         HttpUtility.shared.postData(request: urlRequest, resultType: CreateGtRecord.self) { [weak self] (result) in
             switch result {
             case .success(_):
+               
                 DispatchQueue.main.async {
+                    self?.noteQuestionDataModel.bookmarkedQuestions = []
+                    self?.noteQuestionDataModel.knownQuestions = []
+                    self?.noteQuestionDataModel.pendingQuestions = []
                     self?.noteQuestionDataModel.isLoading = false
                     completion()
                 }
             case .failure(_):
-                print("error")
                 self?.noteQuestionDataModel.isLoading = false
             }
         }
@@ -109,7 +117,10 @@ class NoteQuestiosnViewModel: ObservableObject {
     }
     
     func getSubjectQuestionList(subjectId: String) {
-        noteQuestionDataModel.isLoading = true
+        DispatchQueue.main.async {
+            self.noteQuestionDataModel.isLoading = true
+        }
+        
         guard let url = URL.getNotesOfSubjectList(subjectId: subjectId) else { return }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
@@ -118,22 +129,22 @@ class NoteQuestiosnViewModel: ObservableObject {
             self?.noteQuestionDataModel.isLoading = false
             switch result {
             case .success(let response):
-                DispatchQueue.main.async {
                     if let response {
                         var ids = [QuestionIdsStringElement]()
                         for index in 0..<response.count {
                             let data = response[index].id?.description
                             ids.append(QuestionIdsStringElement(id: data))
                         }
-                        self?.noteQuestionDataModel.questionIds = ids
-                        self?.noteQuestionDataModel.pendingQuestions = ids
                         
-                        if self?.noteQuestionDataModel.questionIds.isEmpty == false {
-                            self?.getQuestion(subjectId: subjectId)
+                        DispatchQueue.main.async {
+                            self?.noteQuestionDataModel.questionIds = ids
+                            self?.noteQuestionDataModel.pendingQuestions = ids
+                            
+                            if self?.noteQuestionDataModel.questionIds.isEmpty == false {
+                                self?.getQuestion(subjectId: subjectId)
+                            }
                         }
-                        
                     }
-                }
             case .failure(let error):
                 DispatchQueue.main.async {
                     print(error.localizedDescription)
@@ -143,7 +154,9 @@ class NoteQuestiosnViewModel: ObservableObject {
     }
     
     func getSubjectQuestions(subjectId: String) {
-        noteQuestionDataModel.isLoading = true
+        DispatchQueue.main.async {
+            self.noteQuestionDataModel.isLoading = true
+        }
         guard let phoneNumber = UserDefaults.standard.string(forKey: UserDetailsKey.mobileNumber) else { return }
         guard let url = URL.getNotesQuestionsList(userId: phoneNumber, subjectId: subjectId) else { return }
         var urlRequest = URLRequest(url: url)
@@ -171,8 +184,8 @@ class NoteQuestiosnViewModel: ObservableObject {
                         case .none:
                             break
                         }
-                        
-                        
+
+
                         self?.noteQuestionDataModel.bookmarkedQuestions = response.first?.bookmarked ?? []
                         self?.noteQuestionDataModel.pendingQuestions = response.first?.questionsList ?? []
                         self?.noteQuestionDataModel.knownQuestions = response.first?.known ?? []
@@ -271,3 +284,6 @@ enum questionIsFrom: String {
     case iKnow = "IKnow"
     case bookmared = "Bookmarked"
 }
+
+
+

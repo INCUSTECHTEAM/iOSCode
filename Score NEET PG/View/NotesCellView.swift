@@ -22,13 +22,11 @@ struct NotesCellView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             HStack {
-                
-                if paymentStatus == false && !isTrial {
+                if !isTrial && !paymentStatus {
                     Image(systemName: "lock.fill")
                         .foregroundColor(.textColor)
                         .font(.custom(K.Font.sfUITextRegular, size: 26))
                 }
-                
                 Text(note.subjectName ?? "Test")
                     .foregroundColor(.textColor)
                     .font(.custom(K.Font.avenir, size: 26))
@@ -43,10 +41,7 @@ struct NotesCellView: View {
                         .font(.custom(K.Font.sfUITextRegular, size: 16))
                         .minimumScaleFactor(0.9)
                         .frame(width: 60, height: 60)
-                        .background {
-                            Circle().fill(Color.orangeColor)
-                        }
-                    
+                        .background(Circle().fill(Color.orangeColor))
                     Text("To Read")
                         .foregroundColor(.textColor)
                         .font(.custom(K.Font.sfUITextRegular, size: 13))
@@ -55,13 +50,12 @@ struct NotesCellView: View {
                 } //: VSTACK
                 .padding(.leading)
                 .onTapGesture {
-                    if paymentStatus == true || isTrial {
+                    if isTrial || paymentStatus {
                         if note.remaining ?? 0 > 0 {
                             isFrom = .toRead
                             isPresentedNotesQuestionScreen = true
                         }
                     } else {
-                        print("payment needed")
                         isPresentedPaymentScreen = true
                     }
                     
@@ -76,9 +70,7 @@ struct NotesCellView: View {
                         .font(.custom(K.Font.sfUITextRegular, size: 16))
                         .minimumScaleFactor(0.9)
                         .frame(width: 60, height: 60)
-                        .background {
-                            Circle().fill(Color.orangeColor)
-                        }
+                        .background(Circle().fill(Color.orangeColor))
                     
                     Text("I Know")
                         .foregroundColor(.textColor)
@@ -88,13 +80,12 @@ struct NotesCellView: View {
                 } //: VSTACK
                 .padding(.leading)
                 .onTapGesture {
-                    if paymentStatus == true || isTrial {
+                    if isTrial || paymentStatus {
                         if note.known ?? 0 > 0 {
                             isFrom = .iKnow
                             isPresentedNotesQuestionScreenFromKnown = true
                         }
                     } else {
-                        print("Payment Needed")
                         isPresentedPaymentScreen = true
                     }
                 }
@@ -108,9 +99,7 @@ struct NotesCellView: View {
                         .font(.custom(K.Font.sfUITextRegular, size: 16))
                         .minimumScaleFactor(0.5)
                         .frame(width: 60, height: 60)
-                        .background {
-                            Circle().fill(Color.orangeColor)
-                        }
+                        .background(Circle().fill(Color.orangeColor))
                     
                     Text("Bookmarked")
                         .foregroundColor(.textColor)
@@ -120,13 +109,12 @@ struct NotesCellView: View {
                 } //: VSTACK
                 .padding(.horizontal)
                 .onTapGesture {
-                    if paymentStatus == true || isTrial {
+                    if isTrial || paymentStatus {
                         if note.bookmarked ?? 0 > 0 {
                             isFrom = .bookmared
                             isPresentedNotesQuestionScreenFromBookmark = true
                         }
                     } else {
-                        print("payment needed")
                         isPresentedPaymentScreen = true
                     }
                 }

@@ -19,6 +19,11 @@ class NotesViewModel: ObservableObject {
     //Call Api
     
     func getNotes() {
+        
+        DispatchQueue.main.async {
+            self.notesDataModel.notesList = NotesResponse()
+        }
+        
         notesDataModel.isLoading = true
         guard let phoneNumber = UserDefaults.standard.string(forKey: UserDetailsKey.mobileNumber) else { return }
         guard let url = URL.getNotesList(userId: phoneNumber) else { return }
@@ -40,28 +45,4 @@ class NotesViewModel: ObservableObject {
             }
         }
     }
-    
-    
-//    func updateLastSeen(request: QuestionUpdateRequest) {
-//        gtQuizResource.createGtRecord(request: request) { [weak self] (result) in
-//            switch result {
-//            case .success(let response):
-//                DispatchQueue.main.async {
-//                    if response?.status == true {
-//                        //Action
-//                        if self?.gtQuizDataModel.questionsIdsList.count ?? 0 > self?.gtQuizDataModel.index ?? 0 {
-//                            self?.gtQuizDataModel.index += 1
-//                            self?.getQuestion()
-//                        }
-//
-//                    }
-//                }
-//            case .failure(let error):
-//                DispatchQueue.main.async {
-//                    print(error)
-//                }
-//            }
-//        }
-//    }
-    
 }

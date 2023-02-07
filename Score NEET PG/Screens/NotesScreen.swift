@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import Combine
 
 struct NotesScreen: View {
     //MARK: - PROPERTIES
     
     @StateObject var notesVM = NotesViewModel()
+    @State var cellChange = false
+    @State private var scrollAmount: CGFloat = 0
     
     init() {
         UINavigationBar.appearance().barTintColor = UIColor(named: "BackgroundColor")
@@ -19,101 +22,37 @@ struct NotesScreen: View {
     
     var body: some View {
         ZStack {
-                VStack {
-                    
-                    CustomInlineNavigationBar(name: "Notes")
-                    
-                    HStack {
-                        
-                        Spacer()
-                        
-                        VStack {
-                            Text(notesVM.notesDataModel.notesList.stats?.totalCount?.description ?? "")
-                                .foregroundColor(.white)
-                                .font(.custom(K.Font.sfUITextBold, size: 16))
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.7)
-                                .frame(width: 80, height: 80)
-                                .background {
-                                    Circle().fill(Color.orangeColor)
-                                }
-                                .padding(.vertical, 10)
-                            
-                            Text("Total Slides")
-                                .foregroundColor(.textColor)
-                                .font(.custom(K.Font.sfUITextRegular, size: 14))
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.7)
-                        } //: VSTACK
-                        .padding(.leading)
-                        
-                        Spacer()
-                        
-                        VStack {
-                            Text(notesVM.notesDataModel.notesList.stats?.totalToBeRead?.description ?? "")
-                                .foregroundColor(.white)
-                                .font(.custom(K.Font.sfUITextBold, size: 16))
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.7)
-                                .frame(width: 80, height: 80)
-                                .background {
-                                    Circle().fill(Color.orangeColor)
-                                }
-                                .padding(.vertical, 10)
-                            
-                            Text("Read")
-                                .foregroundColor(.textColor)
-                                .font(.custom(K.Font.sfUITextRegular, size: 14))
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.7)
-                        } //: VSTACK
-                        //.padding(.leading)
-                        
-                        Spacer()
-                        
-                        VStack {
-                            Text(notesVM.notesDataModel.notesList.stats?.totalBookmarked?.description ?? "")
-                                .foregroundColor(.white)
-                                .font(.custom(K.Font.sfUITextBold, size: 16))
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.7)
-                                .frame(width: 80, height: 80)
-                                .background {
-                                    Circle().fill(Color.orangeColor)
-                                }
-                                .padding(.vertical, 10)
-                            
-                            Text("Bookmarked")
-                                .foregroundColor(.textColor)
-                                .font(.custom(K.Font.sfUITextRegular, size: 14))
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.7)
-                        } //: VSTACK
-                        .padding(.trailing)
-
-                        Spacer()
-                        
-                    } //: HEADER
-                    .frame(maxWidth: .infinity)
-                    
-                    
-                    List {
-                        ForEach(notesVM.notesDataModel.notesList.data?.indices ?? [].indices, id: \.self) { index in
-                            NotesCellView(note: notesVM.notesDataModel.notesList.data?[index] ?? NotesData(), isTrial: index == 0 ? true : false)
-                                .padding(.horizontal)
-                        }
-                        .listRowBackground(Color.backgroundColor)
-                        .listRowSeparator(.hidden)
+            VStack {
+                
+                CustomInlineNavigationBar(name: "Notes")
+                
+                HeaderQuestionCountView()
+                
+                ScrollView(.vertical, showsIndicators: false) {
+                    LazyVStack {
+                        let notesList = notesVM.notesDataModel.notesList.data ?? []
+                        ForEach(Array(notesList.enumerated()), id: \.offset, content: { (index, noteData) in
+                                NotesCellView(note: noteData, isTrial: index == 0 ? true : false)
+                                    .padding(.horizontal)
+                                    .id(index)
+                        })
                     }
-                    .listStyle(.plain)
-                    
-                    Spacer()
                 }
-                .onAppear(perform: {
-                    notesVM.getNotes()
-                })
-                .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
-                .navigationBarTitleDisplayMode(.inline)
+                .simultaneousGesture(DragGesture().onChanged({ value in
+                    let sensitivity: CGFloat = 0.02
+                    self.scrollAmount = sensitivity * value.translation.height
+                }))
+                .offset(y: -scrollAmount)
+              
+                
+                
+                Spacer()
+            }
+            .onAppear(perform: {
+                notesVM.getNotes()
+            })
+            .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
+            .navigationBarTitleDisplayMode(.inline)
             
             if self.notesVM.notesDataModel.isLoading {
                 GeometryReader { proxy in
@@ -124,8 +63,89 @@ struct NotesScreen: View {
             }
             
         } //: ZSTACK
+        .navigationBarBackButtonHidden()
         
     }
+    
+    //MARK: HEADER QUESTION COUNT
+    
+    @ViewBuilder
+    func HeaderQuestionCountView() -> some View {
+        HStack {
+            
+            Spacer()
+            
+            VStack {
+                
+                Text(notesVM.notesDataModel.notesList.stats?.totalCount?.description ?? "")
+                    .foregroundColor(.white)
+                    .font(.custom(K.Font.sfUITextBold, size: 16))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+                    .frame(width: 80, height: 80)
+                    .background {
+                        Circle().fill(Color.orangeColor)
+                    }
+                    .padding(.vertical, 10)
+                
+                Text("Total Slides")
+                    .foregroundColor(.textColor)
+                    .font(.custom(K.Font.sfUITextRegular, size: 14))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+            } //: VSTACK
+            .padding(.leading)
+            
+            Spacer()
+            
+            VStack {
+                Text(notesVM.notesDataModel.notesList.stats?.totalToBeRead?.description ?? "")
+                    .foregroundColor(.white)
+                    .font(.custom(K.Font.sfUITextBold, size: 16))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+                    .frame(width: 80, height: 80)
+                    .background {
+                        Circle().fill(Color.orangeColor)
+                    }
+                    .padding(.vertical, 10)
+                
+                Text("Read")
+                    .foregroundColor(.textColor)
+                    .font(.custom(K.Font.sfUITextRegular, size: 14))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+            } //: VSTACK
+            //.padding(.leading)
+            
+            Spacer()
+            
+            VStack {
+                Text(notesVM.notesDataModel.notesList.stats?.totalBookmarked?.description ?? "")
+                    .foregroundColor(.white)
+                    .font(.custom(K.Font.sfUITextBold, size: 16))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+                    .frame(width: 80, height: 80)
+                    .background {
+                        Circle().fill(Color.orangeColor)
+                    }
+                    .padding(.vertical, 10)
+                
+                Text("Bookmarked")
+                    .foregroundColor(.textColor)
+                    .font(.custom(K.Font.sfUITextRegular, size: 14))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+            } //: VSTACK
+            .padding(.trailing)
+            
+            Spacer()
+            
+        } //: HEADER
+        .frame(maxWidth: .infinity)
+    }
+    
 }
 
 struct NotesScreen_Previews: PreviewProvider {
@@ -133,3 +153,4 @@ struct NotesScreen_Previews: PreviewProvider {
         NotesScreen()
     }
 }
+

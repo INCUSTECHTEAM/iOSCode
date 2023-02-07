@@ -422,6 +422,7 @@
 		8141B81228925F5B00C63589 /* Score NEET PG */ = {
 			isa = PBXGroup;
 			children = (
+				AFEF24E62991F86A006B2D73 /* Manager */,
 				AFF9D531293881B0004B8C9B /* Resource */,
 				AF7A2D252899989800E114F9 /* typingDot.gif */,
 				819690432892BC1F00FABD79 /* Score MLE.entitlements */,
@@ -666,6 +667,13 @@
 				AFBD5C35298C3FD7000ACCF5 /* NotesQuizViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AFEF24E62991F86A006B2D73 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		AFF9D531293881B0004B8C9B /* Resource */ = {
@@ -1160,7 +1168,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Score NEET PG/Score MLE.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Score NEET PG/Preview Content\"";
 				DEVELOPMENT_TEAM = PC6UZ43XDV;
 				ENABLE_PREVIEWS = YES;
@@ -1201,7 +1209,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Score NEET PG/Score MLE.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Score NEET PG/Preview Content\"";
 				DEVELOPMENT_TEAM = PC6UZ43XDV;
 				ENABLE_PREVIEWS = YES;

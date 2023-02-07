@@ -26,19 +26,24 @@ struct NotesQuestionsScreen: View {
         UIView.appearance().isExclusiveTouch = true
     }
     
-    
     //MARK: - BODY
     var body: some View {
         ZStack {
             VStack {
                 HStack {
-                    Button {if noteQuestionsVM.noteQuestionDataModel.knownQuestions.isEmpty == false || noteQuestionsVM.noteQuestionDataModel.bookmarkedQuestions.isEmpty == false {
-                        noteQuestionsVM.updateDataToServer(subjectId: subjectId) {
-                            presentationMode.wrappedValue.dismiss()
-                        }
-                    } else {
+                    Button {
                         presentationMode.wrappedValue.dismiss()
-                    }
+                        if noteQuestionsVM.noteQuestionDataModel.knownQuestions.isEmpty == false || noteQuestionsVM.noteQuestionDataModel.bookmarkedQuestions.isEmpty == false {
+                            noteQuestionsVM.updateDataToServer(subjectId: subjectId, completion: {
+                                DispatchQueue.main.async {
+                                    presentationMode.wrappedValue.dismiss()
+                                }
+                            })
+                        } else {
+                            DispatchQueue.main.async {
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        }
                     } label: {
                         Image(systemName: "chevron.left")
                             .font(.title2)
@@ -57,74 +62,11 @@ struct NotesQuestionsScreen: View {
                     
                     Spacer()
                     
-//                    if noteQuestionsVM.noteQuestionDataModel.questionIds.count > 0 {
-//                        if noteQuestionsVM.noteQuestionDataModel.index > 0 {
-//                            VStack {
-//                                Button {
-//                                    // Action
-//                                    isButtonPressed = true
-//                                    noteQuestionsVM.prev(subjectId: subjectId)
-//                                    
-//                                    DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
-//                                        isButtonPressed = false
-//                                    }
-//                                    
-//                                } label: {
-//                                    Image(systemName: "arrowtriangle.backward.fill")
-//                                        .font(.title2)
-//                                        .foregroundColor(.white)
-//                                }
-//                                .padding(.all, 10)
-//                                .background {
-//                                    Circle()
-//                                        .foregroundColor(.orange)
-//                                }
-//                                .disabled(isButtonPressed)
-//                                
-//                                Text("Prev")
-//                                    .foregroundColor(.textColor)
-//                                    .font(.custom(K.Font.sfUITextRegular, size: 12))
-//                            } //: VSTACK
-//                            .padding(.horizontal)
-//                        }
-                        
-                        Text("\(noteQuestionsVM.noteQuestionDataModel.index + 1)/\(noteQuestionsVM.noteQuestionDataModel.questionIds.count)")
-                            .foregroundColor(.textColor)
-                            .font(.custom(K.Font.sfUITextRegular, size: 14))
-                        
-//                        if noteQuestionsVM.noteQuestionDataModel.isFrom != .toRead {
-//                            if noteQuestionsVM.noteQuestionDataModel.questionIds.count > noteQuestionsVM.noteQuestionDataModel.index + 1 {
-//                                VStack {
-//                                    Button {
-//                                        // Action
-//                                        isButtonPressed = true
-//
-//                                        noteQuestionsVM.next(subjectId: subjectId)
-//
-//                                        DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
-//                                            isButtonPressed = false
-//                                        }
-//
-//                                    } label: {
-//                                        Image(systemName: "arrowtriangle.right.fill")
-//                                            .font(.title2)
-//                                            .foregroundColor(.white)
-//                                    }
-//                                    .padding(.all, 10)
-//                                    .background {
-//                                        Circle()
-//                                            .foregroundColor(.orange)
-//                                    }
-//                                    .disabled(isButtonPressed)
-//
-//                                    Text("Next")
-//                                        .foregroundColor(.textColor)
-//                                        .font(.custom(K.Font.sfUITextRegular, size: 12))
-//                                } //: VSTACK
-//                                .padding(.trailing)
-//                            }
-//                        }
-//                    }
+                    
+                    
+                    Text("\(noteQuestionsVM.noteQuestionDataModel.index + 1)/\(noteQuestionsVM.noteQuestionDataModel.questionIds.count)")
+                        .foregroundColor(.textColor)
+                        .font(.custom(K.Font.sfUITextRegular, size: 14))
                     
                     
                 } // TOP NAVIGATION BAR
@@ -179,91 +121,31 @@ struct NotesQuestionsScreen: View {
                 
                 HStack(spacing: 20) {
                     
-                    Button("Next") {
+                    
+                    Button {
                         if noteQuestionsVM.noteQuestionDataModel.question.questions?.isEmpty == false {
                             isPresentNoteQuiz = true
                             return
                         }
                         
                         noteQuestionsVM.updateIknowOrBookmarked(subjectId: subjectId, isBookmarked: false)
-                        
+                    } label: {
+                        Text("Next")
+                            .font(.custom(K.Font.avenir, size: 16))
+                            .fontWeight(.medium)
+                            .frame(width: UIScreen.main.bounds.size.width / 2.7)
+                            .padding()
+                            .background {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke()
+                                    .foregroundColor(.orangeColor)
+                            }
                     }
-                    .frame(width: UIScreen.main.bounds.size.width / 2.7)
-                    .padding()
-                    .background {
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke()
-                            .foregroundColor(.orangeColor)
-                    }
+                    
+                    
+                    
                     
                     Spacer()
-                    
-                    //                    if noteQuestionsVM.noteQuestionDataModel.isFrom == .bookmared || noteQuestionsVM.noteQuestionDataModel.isFrom == .toRead {
-                    //
-                    //                        if noteQuestionsVM.noteQuestionDataModel.isFrom == .bookmared {
-                    //                            Spacer()
-                    //                        }
-                    //
-                    //                        Button {
-                    //                            // Action
-                    //                            noteQuestionsVM.updateIknowOrBookmarked(subjectId: subjectId, isBookmarked: false)
-                    //                        } label: {
-                    //                            Text("I Know")
-                    //                                .foregroundColor(noteQuestionsVM.noteQuestionDataModel.knownQuestions.contains(where: { $0.id == noteQuestionsVM.noteQuestionDataModel.questionIds[noteQuestionsVM.noteQuestionDataModel.index].id }) ? .white : .orangeColor)
-                    //                                .font(.custom(K.Font.avenir, size: 16))
-                    //                                .fontWeight(.medium)
-                    //                                .padding(.all)
-                    //                        }
-                    //                        .frame(maxWidth: UIScreen.main.bounds.width / 2.5)
-                    //                        .overlay {
-                    //                            RoundedRectangle(cornerRadius: 8)
-                    //                                .stroke(lineWidth: 1)
-                    //                                .foregroundColor(.orangeColor)
-                    //                        }
-                    //                        .background {
-                    //                            if  noteQuestionsVM.noteQuestionDataModel.knownQuestions.contains(where: { $0.id == noteQuestionsVM.noteQuestionDataModel.questionIds[noteQuestionsVM.noteQuestionDataModel.index].id }) {
-                    //                                Color.orangeColor.cornerRadius(8, corners: .allCorners)
-                    //                            } else {
-                    //                                Color.clear
-                    //                            }
-                    //
-                    //                        }
-                    //                    }
-                    //
-                    //
-                    //                    if noteQuestionsVM.noteQuestionDataModel.isFrom == .iKnow || noteQuestionsVM.noteQuestionDataModel.isFrom == .toRead {
-                    //
-                    //                        Button {
-                    //                            // Action
-                    //                            noteQuestionsVM.updateIknowOrBookmarked(subjectId: subjectId, isBookmarked: true)
-                    //                        } label: {
-                    //                            Text("Bookmark")
-                    //                                .foregroundColor(noteQuestionsVM.noteQuestionDataModel.bookmarkedQuestions.contains(where: { $0.id == noteQuestionsVM.noteQuestionDataModel.questionIds[noteQuestionsVM.noteQuestionDataModel.index].id }) ? .white : .orangeColor)
-                    //                                .font(.custom(K.Font.avenir, size: 16))
-                    //                                .fontWeight(.medium)
-                    //                                .padding(.all)
-                    //
-                    //                        }
-                    //                        .frame(maxWidth: UIScreen.main.bounds.width / 2.5)
-                    //                        .overlay {
-                    //                            RoundedRectangle(cornerRadius: 8)
-                    //                                .stroke(lineWidth: 1)
-                    //                                .foregroundColor(.orangeColor)
-                    //                        }
-                    //                        .background {
-                    //                            if noteQuestionsVM.noteQuestionDataModel.bookmarkedQuestions.contains(where: { $0.id == noteQuestionsVM.noteQuestionDataModel.questionIds[noteQuestionsVM.noteQuestionDataModel.index].id }) {
-                    //                                Color.orangeColor.cornerRadius(8, corners: .allCorners)
-                    //                            } else {
-                    //                                Color.clear
-                    //                            }
-                    //
-                    //                        }
-                    //
-                    //                        if noteQuestionsVM.noteQuestionDataModel.isFrom == .iKnow {
-                    //                            Spacer()
-                    //                        }
-                    //
-                    //                    }
                     
                 } //: MIDDLE
                 .padding(.all)
@@ -294,7 +176,6 @@ struct NotesQuestionsScreen: View {
                     Loader()
                         .frame(width: proxy.size.width, height: proxy.size.height, alignment: .center)
                 }
-                //.background(Color.black.opacity(0.45).edgesIgnoringSafeArea(.all))
             }
             
         } //: ZSTACK
@@ -312,10 +193,18 @@ struct NotesQuestionsScreen: View {
         }
         .fullScreenCover(isPresented: $isPresentNoteQuiz) {
             if let questions = noteQuestionsVM.noteQuestionDataModel.question.questions {
-                NotesQuizScreen(questions: questions) { isBookmark in
-                    //Call I know or Bookmark
-                    noteQuestionsVM.updateIknowOrBookmarked(subjectId: subjectId, isBookmarked: isBookmark)
+                
+                NotesQuizScreen(questions: questions) { isBookmarked in
+                    self.noteQuestionsVM.updateIknowOrBookmarked(subjectId: subjectId, isBookmarked: isBookmarked)
+                } saveQuiz: {
+                    self.noteQuestionsVM.updateDataToServer(subjectId: subjectId, completion: {
+                        DispatchQueue.main.async {
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    })
                 }
+
+                
             }
         }
         
