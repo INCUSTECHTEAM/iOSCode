@@ -19,15 +19,31 @@ struct CustomInlineNavigationBar: View {
     var body: some View {
         ZStack {
             HStack {
-                
-                Spacer()
-                
                 Text(name)
                     .font(.custom(K.Font.sfUITextBold, size: 18))
                     .foregroundColor(.textColor)
+                    .multilineTextAlignment(.center)
                     .padding(.all, 10)
-                
-                Spacer()
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+            }
+            .overlay(alignment: name == "Search" ? .leading : .trailing) {
+                NavigationLink {
+                    CourseSelectionScreen(navToHome: {})
+                } label: {
+                    VStack(spacing: 0) {
+                        Image("duration")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundColor(.orangeColor)
+                            .frame(width: 30, height: 30)
+                        
+                        Text("Course")
+                            .font(.custom(K.Font.sfUITextRegular, size: 13))
+                            .foregroundColor(.orangeColor)
+                    }
+                    .padding()
+                }
             }
         } //: ZSTACK
         .background(Color.backgroundColor)

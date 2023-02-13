@@ -38,9 +38,24 @@ final class HttpUtility {
             do {
                 let response = try JSONDecoder().decode(resultType.self, from: data)
                 completionHandler(.success(response))
-            } catch let err {
-                debugPrint(err)
-                completionHandler(.failure(.invalidData))
+            } catch let err as DecodingError {
+                debugPrint(err.localizedDescription)
+                //completionHandler(.failure(.invalidData))
+                switch err {
+                case .keyNotFound(let key, let context):
+                    let errorMessage = "Key '\(key)' not found: \(context.debugDescription)"
+                    completionHandler(.failure(.decodingError(message: errorMessage)))
+                case .typeMismatch(let type, let context):
+                    let errorMessage = "Type '\(type)' mismatch: \(context.debugDescription)"
+                    completionHandler(.failure(.decodingError(message: errorMessage)))
+                case .valueNotFound(let type, let context):
+                    let errorMessage = "Value not found for type '\(type)': \(context.debugDescription)"
+                    completionHandler(.failure(.decodingError(message: errorMessage)))
+                default:
+                    completionHandler(.failure(.decodingError(message: "Unknown error")))
+                }
+            } catch {
+                completionHandler(.failure(.customMessage(message: "Something went wrong")))
             }
             
         }.resume()

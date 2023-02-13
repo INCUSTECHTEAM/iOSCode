@@ -92,6 +92,7 @@
 		AF0CAFF6289C456200B4B58C /* PaymentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0CAFF5289C456200B4B58C /* PaymentScreen.swift */; };
 		AF0CAFFA289C584A00B4B58C /* PaymentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0CAFF9289C584A00B4B58C /* PaymentHandler.swift */; };
 		AF0CAFFC289D67B900B4B58C /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0CAFFB289D67B900B4B58C /* SubscriptionView.swift */; };
+		AF17499E2999510900025C4F /* SubjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF17499D2999510900025C4F /* SubjectsViewModel.swift */; };
 		AF371982294779C700501B77 /* AudioResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF371981294779C700501B77 /* AudioResponse.swift */; };
 		AF37198429477A1900501B77 /* DeleteAudioRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF37198329477A1900501B77 /* DeleteAudioRequest.swift */; };
 		AF3719862947872300501B77 /* RecorderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3719852947872300501B77 /* RecorderBar.swift */; };
@@ -99,6 +100,10 @@
 		AF37198D2947921800501B77 /* RecordingUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF37198C2947921800501B77 /* RecordingUpdateRequest.swift */; };
 		AF37198F2948544F00501B77 /* avenir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF37198E2948544F00501B77 /* avenir.ttf */; };
 		AF371991294883A700501B77 /* Music Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF371990294883A700501B77 /* Music Player.swift */; };
+		AF39746629955EF700203080 /* CourseSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF39746529955EF700203080 /* CourseSelectionScreen.swift */; };
+		AF3974682995687600203080 /* CourseEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3974672995687600203080 /* CourseEnvironment.swift */; };
+		AF39746A299576CC00203080 /* QuestionReportRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF397469299576CC00203080 /* QuestionReportRequest.swift */; };
+		AF39746C299590A500203080 /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF39746B299590A500203080 /* InAppPurchaseManager.swift */; };
 		AF40BD80296FD2650081096A /* SearchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF40BD7F296FD2650081096A /* SearchScreen.swift */; };
 		AF40BD82296FD9020081096A /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF40BD81296FD9020081096A /* SearchViewModel.swift */; };
 		AF40BD84296FDEC30081096A /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF40BD83296FDEC30081096A /* Debouncer.swift */; };
@@ -279,6 +284,7 @@
 		AF0CAFF5289C456200B4B58C /* PaymentScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentScreen.swift; sourceTree = "<group>"; };
 		AF0CAFF9289C584A00B4B58C /* PaymentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHandler.swift; sourceTree = "<group>"; };
 		AF0CAFFB289D67B900B4B58C /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
+		AF17499D2999510900025C4F /* SubjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsViewModel.swift; sourceTree = "<group>"; };
 		AF371981294779C700501B77 /* AudioResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioResponse.swift; sourceTree = "<group>"; };
 		AF37198329477A1900501B77 /* DeleteAudioRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAudioRequest.swift; sourceTree = "<group>"; };
 		AF3719852947872300501B77 /* RecorderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderBar.swift; sourceTree = "<group>"; };
@@ -286,6 +292,10 @@
 		AF37198C2947921800501B77 /* RecordingUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingUpdateRequest.swift; sourceTree = "<group>"; };
 		AF37198E2948544F00501B77 /* avenir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = avenir.ttf; sourceTree = "<group>"; };
 		AF371990294883A700501B77 /* Music Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Music Player.swift"; sourceTree = "<group>"; };
+		AF39746529955EF700203080 /* CourseSelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSelectionScreen.swift; sourceTree = "<group>"; };
+		AF3974672995687600203080 /* CourseEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseEnvironment.swift; sourceTree = "<group>"; };
+		AF397469299576CC00203080 /* QuestionReportRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionReportRequest.swift; sourceTree = "<group>"; };
+		AF39746B299590A500203080 /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
 		AF40BD7F296FD2650081096A /* SearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreen.swift; sourceTree = "<group>"; };
 		AF40BD81296FD9020081096A /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		AF40BD83296FDEC30081096A /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
@@ -596,6 +606,7 @@
 				AF0C326B28E34E7A00CA3C71 /* WebView.swift */,
 				AFD436B1293E67A5007C611A /* AnyCodableValue.swift */,
 				AF40BD83296FDEC30081096A /* Debouncer.swift */,
+				AF3974672995687600203080 /* CourseEnvironment.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -636,6 +647,7 @@
 				AF40BD7F296FD2650081096A /* SearchScreen.swift */,
 				AF6280A7297138290082D464 /* SearchHistoryScreen.swift */,
 				AFBD5C33298C3196000ACCF5 /* NotesQuizScreen.swift */,
+				AF39746529955EF700203080 /* CourseSelectionScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -665,6 +677,7 @@
 				AF40BD81296FD9020081096A /* SearchViewModel.swift */,
 				AF6280A929713CF70082D464 /* SearchHistoryViewModel.swift */,
 				AFBD5C35298C3FD7000ACCF5 /* NotesQuizViewModel.swift */,
+				AF17499D2999510900025C4F /* SubjectsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -672,6 +685,7 @@
 		AFEF24E62991F86A006B2D73 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				AF39746B299590A500203080 /* InAppPurchaseManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -723,6 +737,7 @@
 				AF37198329477A1900501B77 /* DeleteAudioRequest.swift */,
 				AF37198C2947921800501B77 /* RecordingUpdateRequest.swift */,
 				AFD09E99298D9EA800F2FBEF /* QuestionBlockStatus.swift */,
+				AF397469299576CC00203080 /* QuestionReportRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -901,6 +916,7 @@
 				812016E3289550E3007F61E5 /* SYHFDetailsScreen.swift in Sources */,
 				AF0C326C28E34E7A00CA3C71 /* WebView.swift in Sources */,
 				8141B8322892659200C63589 /* Constant.swift in Sources */,
+				AF39746A299576CC00203080 /* QuestionReportRequest.swift in Sources */,
 				AFF9D551293A0696004B8C9B /* GtQuizScreen.swift in Sources */,
 				AFF9D51C2937D68F004B8C9B /* SubjectTestCellView.swift in Sources */,
 				AFF9D5462938D623004B8C9B /* SubjectMockTestResource.swift in Sources */,
@@ -913,8 +929,10 @@
 				AF7A2D302899C5C200E114F9 /* MockTestQuestionsScreen.swift in Sources */,
 				8136150F2893126600E7CF46 /* Loader.swift in Sources */,
 				AF371991294883A700501B77 /* Music Player.swift in Sources */,
+				AF39746C299590A500203080 /* InAppPurchaseManager.swift in Sources */,
 				AF7A2D112898D5CC00E114F9 /* GIFImage.swift in Sources */,
 				AF40BD84296FDEC30081096A /* Debouncer.swift in Sources */,
+				AF17499E2999510900025C4F /* SubjectsViewModel.swift in Sources */,
 				AFF9D5242937E6F8004B8C9B /* GrandTestLeaderboardCellView.swift in Sources */,
 				AF6DC9ED2943201300397EE0 /* QuizOptionView.swift in Sources */,
 				8141B85228929BA300C63589 /* VerificationScreen.swift in Sources */,
@@ -927,6 +945,7 @@
 				AFD4369E293B0A39007C611A /* NotesResponse.swift in Sources */,
 				AFD436AE293E2257007C611A /* QuizCompleteRequest.swift in Sources */,
 				AFF9D53A2938B3B6004B8C9B /* GtListResponse.swift in Sources */,
+				AF3974682995687600203080 /* CourseEnvironment.swift in Sources */,
 				81AD93102897DAE90084E8E6 /* ChipsView.swift in Sources */,
 				8141B8502892990500C63589 /* CustomNavigationView.swift in Sources */,
 				AF3719862947872300501B77 /* RecorderBar.swift in Sources */,
@@ -983,6 +1002,7 @@
 				AF7A2D0828985E2E00E114F9 /* VideoChatMessageView.swift in Sources */,
 				AFD436B6293FA705007C611A /* TabBarScreen.swift in Sources */,
 				819E20D628971AAB00453BC2 /* FullScreenImageScreen.swift in Sources */,
+				AF39746629955EF700203080 /* CourseSelectionScreen.swift in Sources */,
 				8141B82B289261DA00C63589 /* Onboard.swift in Sources */,
 				8180B12E2895067A00B1331F /* RightWrongQuestionCellView.swift in Sources */,
 				AFF9D555293A0F1A004B8C9B /* GtQuizResource.swift in Sources */,
@@ -1168,7 +1188,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Score NEET PG/Score MLE.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Score NEET PG/Preview Content\"";
 				DEVELOPMENT_TEAM = PC6UZ43XDV;
 				ENABLE_PREVIEWS = YES;
@@ -1190,7 +1210,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vongo.Score-MLE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1209,7 +1229,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Score NEET PG/Score MLE.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Score NEET PG/Preview Content\"";
 				DEVELOPMENT_TEAM = PC6UZ43XDV;
 				ENABLE_PREVIEWS = YES;
@@ -1231,7 +1251,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vongo.Score-MLE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -19,7 +19,12 @@ var isStaff = false
 
 struct K {
     
-    static let baseURL = "https://vongo.incusquiz.com/vongo/"
+    static let neetPGBaseURL = "https://chatbot-backend.mbbscare.in/"
+    static let nursingBaseURL = "https://nurse-coach.mbbscare.in/"
+    
+    static var baseURL: String {
+        return CourseEnvironment.shared.isNeetPG() == true ? K.neetPGBaseURL : K.nursingBaseURL
+    }
     
     struct Content {
         static let appName = "Expense Tracker"

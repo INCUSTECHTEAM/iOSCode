@@ -13,6 +13,7 @@ struct MockTestScreen: View {
     @ObservedObject var mockTestVM: MockTestViewModel = MockTestViewModel()
     @State private var isPresentedPaymentScreen = false
     @StateObject var storeManager = StoreManager()
+    @ObservedObject var inAppPurchase = InAppPurchaseManager.shared
     
     
     var body: some View {
@@ -37,7 +38,7 @@ struct MockTestScreen: View {
                                         isPresentedPaymentScreen = true
                                     }
                                 }
-                                .listRowInsets(.init(top: 5, leading: 10, bottom: 5, trailing: 10))
+                            
                         } else {
                             SubjectTestCellView(subject: mockTestVM.mockTestDataModel.subjectTests[index], isTrial: index == 0 ? true : false)
                                 .onTapGesture {
@@ -45,27 +46,40 @@ struct MockTestScreen: View {
                                         isPresentedPaymentScreen = true
                                     }
                                 }
-                                .listRowInsets(.init(top: 5, leading: 10, bottom: 10, trailing: 5))
+                            
                         }
                         
                     }
+                    .listRowInsets(.none)
                     .listRowBackground(Color.backgroundColor)
                     .listRowSeparator(.hidden)
                     
+                    
                 }
                 .listStyle(.plain)
+                .id(mockTestVM.mockTestDataModel.refreshCounter)
                 .onAppear {
-                    mockTestVM.getUserDetails()
-                    mockTestVM.getSubjectTests()
+                    DispatchQueue.main.asyncAfter(deadline: .now()+0.2, execute: {
+                        mockTestVM.getUserDetails()
+                        mockTestVM.getSubjectTests()
+                    })
                 }
+                
+                
                 
                 Spacer()
                 
             } //: VSTACK
+            .alert(item: $mockTestVM.alertItem) { alertItem in
+                Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
+            }
             .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
             .navigationBarTitleDisplayMode(.inline)
             
-            
+            Text("Sorry, No \(mockTestVM.mockTestDataModel.selectedTab == 0 ? "Questions" : "Subject Test") Available")
+                .font(.custom(K.Font.sfUITextRegular, size: 15))
+                .foregroundColor(.textColor)
+                .opacity(mockTestVM.mockTestDataModel.selectedTab == 0 && mockTestVM.mockTestDataModel.mockTests.isEmpty && mockTestVM.mockTestDataModel.isLoading == false ? 1 : mockTestVM.mockTestDataModel.selectedTab == 1 && mockTestVM.mockTestDataModel.subjectTests.isEmpty && mockTestVM.mockTestDataModel.isLoading == false ? 1 : 0)
             
             if self.mockTestVM.mockTestDataModel.isLoading {
                 GeometryReader { proxy in
@@ -79,6 +93,7 @@ struct MockTestScreen: View {
         .fullScreenCover(isPresented: $isPresentedPaymentScreen, content: {
             PaymentScreen(storeManager: storeManager)
         })
+        
         
     }
 }

@@ -107,7 +107,8 @@ struct VerificationScreen: View {
                                                                        subscriptionPurchasedDate: userDetails.paymentExpiryDate)
                         
                         
-                        authentication.updateValidation(success: true)
+                        //authentication.updateValidation(success: true)
+                        action = 2
                     } else {
                         action = 1
                     }
@@ -165,6 +166,12 @@ struct VerificationScreen: View {
                     // MARK: - NAVIGATIONS
                     
                     NavigationLink(destination: UserDetailsUpdateScreen(phoneNumber: phoneNumber), tag: 1, selection: $action) {
+                        EmptyView()
+                    }
+                    
+                    NavigationLink(destination: CourseSelectionScreen(isFromRegistration: true, navToHome: {
+                        authentication.updateValidation(success: true)
+                    }), tag: 2, selection: $action) {
                         EmptyView()
                     }
                     
@@ -233,12 +240,12 @@ struct VerificationScreen: View {
                         .frame(width: 180)
                         .padding()
                         
-                        
+//#if  DEBUG
 //                        Button(action: {
 //                            hideKeyboard()
 //                            isLoading = false
 //                            checkUserDetails()
-//
+//                            
 //                        }) {
 //                            Text("Verify Without OTP")
 //                                .modifier(ButtonTextModifier())
@@ -246,6 +253,8 @@ struct VerificationScreen: View {
 //                        .background(Color.orangeColor).cornerRadius(15)
 //                        .frame(width: 180)
 //                        .padding()
+//#endif
+                       
                         
                     } //: VSTACK
                     

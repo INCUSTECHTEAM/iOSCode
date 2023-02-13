@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - SubjectElement
-struct SubjectElement: Codable, Identifiable {
+struct SubjectElement: Codable, Identifiable, Hashable {
     let id: Int
     let subjectName, subjectDescription: String
 

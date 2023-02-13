@@ -9,55 +9,17 @@ import SwiftUI
 
 struct SubjectsScreen: View {
     
-    //MARK: - PROPERTIES
-    @State private var subjects = Subject()
-    @State private var pptSubjects = Subject()
-    @State private var searchText = ""
-    @State private var isLoading = false
+    @StateObject private var vm = SubjectsViewModel()
+    @Namespace private var namespace
     
-    
+    //Navigation
     init() {
         UINavigationBar.appearance().barTintColor = UIColor(named: "BackgroundColor")
         UINavigationBar.appearance().backgroundColor = UIColor(named: "BackgroundColor")
     }
     
-    var filteredSubjects: Subject {
-        if searchText.isEmpty {
-            return subjects
-        } else {
-            return subjects.filter { $0.subjectName.localizedCaseInsensitiveContains(searchText) }
-        }
-    }
     
     
-    //MARK: - FUNCTIONS
-    
-    private func getSubjects() {
-        isLoading = true
-        NetworkManager.shared.getSubjects { result in
-            isLoading = false
-            switch result {
-            case .success(let subjects):
-                self.subjects = subjects
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    private func getSubjectWithPPT() {
-        isLoading = true
-        NetworkManager.shared.getSubjectsWithPPT { result in
-            isLoading = false
-            switch result {
-            case .success(let subjects):
-                self.pptSubjects = subjects
-                getSubjects()
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
     
     
     
@@ -73,7 +35,7 @@ struct SubjectsScreen: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 15, height: 15)
-                    TextField("Search", text: $searchText)
+                    TextField("Search", text: $vm.searchText)
                     Spacer()
                 }
                 .padding(.all, 15)
@@ -83,45 +45,45 @@ struct SubjectsScreen: View {
                 }
                 .padding(.horizontal)
                 
-                List {
-                    Section(content: {
-                        ForEach(filteredSubjects) { subject in
-                            SubjectCellView(subject: subject, isHidePPT: pptSubjects.contains(where: {  $0.id == subject.id }) ? true : false)
-                            //.background(NavigationLink("", destination: VideoListScreen(subjectID: subject.id.description)).opacity(0))
-                            //.background(NavigationLink("", destination: PPTListView(subjectID: subject.id.description)).opacity(0))
-                        }
-                        .listRowBackground(Color.backgroundColor)
-                        .listRowSeparator(.hidden)
-                    }, header: {
-                        if !filteredSubjects.isEmpty {
-                            HStack {
-                                Text(filteredSubjects.count > 1 ? "\(filteredSubjects.count) Subjects" : "\(filteredSubjects.count) Subject")
-                                    .foregroundColor(.textColor)
-                                    .font(.custom(K.Font.sfUITextRegular, size: 18))
-                                
-                                Spacer()
-                            }
-                            .padding(10)
-                            .listRowInsets(EdgeInsets())
-                            .background(Color.backgroundColor)
-                            
-                        }
+                if !vm.filteredSubjects.isEmpty {
+                    HStack {
+                        Text(vm.filteredSubjects.count > 1 ? "\(vm.filteredSubjects.count) Subjects" : "\(vm.filteredSubjects.count) Subject")
+                            .foregroundColor(.textColor)
+                            .font(.custom(K.Font.sfUITextRegular, size: 18))
                         
-                    })
-                }
-                .listStyle(.plain)
-                .onAppear {
-                    //getSubjects()
-                    getSubjectWithPPT()
+                        Spacer()
+                    }
+                    .padding(10)
+                    
                 }
                 
+                
+                ScrollView(.vertical, showsIndicators: false) {
+                    LazyVStack(spacing: 15) {
+                        ForEach(vm.filteredSubjects, id: \.id) { subject in
+                            SubjectCellView(subject: subject, isHidePPT: vm.pptSubjects.contains(where: {  $0.id == subject.id }) ? true : false)
+                                .padding(.horizontal)
+                        }
+                    }
+                }
+                .onAppear {
+                    vm.getSubjectWithPPT()
+                }
+                                
                 Spacer()
                 
             } //: VSTACK
             .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
             .navigationBarTitleDisplayMode(.inline)
             
-            if self.isLoading {
+            
+            if !self.vm.isLoading && self.vm.filteredSubjects.isEmpty {
+                Text(vm.subjects.isEmpty ? "No subject found" : "No results found")
+                    .foregroundColor(.textColor)
+                    .font(.custom(K.Font.sfUITextRegular, size: 18))
+            }
+            
+            if self.vm.isLoading {
                 GeometryReader { proxy in
                     Loader()
                         .frame(width: proxy.size.width, height: proxy.size.height, alignment: .center)

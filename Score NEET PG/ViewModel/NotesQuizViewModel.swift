@@ -40,6 +40,29 @@ class NotesQuizViewModel: ObservableObject {
         }
     }
     
+    func reportQuestion() {
+        guard let phoneNumber = UserDefaults.standard.string(forKey: UserDetailsKey.mobileNumber) else { return }
+        let request = QuestionReportRequest(id: currentQuestion?.id?.description ?? "", user: phoneNumber)
+        
+        guard let url = URL.noteQuestionReport() else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "content-type")
+        urlRequest.httpBody = try? JSONEncoder().encode(request)
+        
+        HttpUtility.shared.postData(request: urlRequest, resultType: QuestionReportResponse.self) { result in
+            switch result {
+            case .success(let response):
+                print(response as Any)
+                DispatchQueue.main.async {
+                    self.nextQuestion()
+                }
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
+    
     func updateBlockStatus() {
         
         guard let phoneNumber = UserDefaults.standard.string(forKey: UserDetailsKey.mobileNumber) else { return }

@@ -53,6 +53,9 @@ struct NotesScreen: View {
             })
             .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
             .navigationBarTitleDisplayMode(.inline)
+            .alert(item: $notesVM.alertItem) { alertItem in
+                Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
+            }
             
             if self.notesVM.notesDataModel.isLoading {
                 GeometryReader { proxy in

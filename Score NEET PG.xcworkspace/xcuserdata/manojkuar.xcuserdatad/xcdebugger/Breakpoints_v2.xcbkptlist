@@ -14,8 +14,8 @@
             filePath = "Score NEET PG/Utilities/NetworkManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "682"
-            endingLineNumber = "682"
+            startingLineNumber = "711"
+            endingLineNumber = "711"
             landmarkName = "getMockQuestions(mockTestID:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "Score NEET PG/Screens/VerificationScreen.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "VerificationScreen"
             landmarkType = "14">
          </BreakpointContent>
@@ -39,17 +39,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1D32022C-6675-48C8-8B77-188054ADC147"
+            uuid = "CE93DD03-84D2-4045-AB7C-641E6BA8FB7D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Score NEET PG/Screens/VideoListScreen.swift"
+            filePath = "Score NEET PG/Manager/InAppPurchaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "getVideoData(hyfID:)"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "updateSubscription()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5ECA4176-B85F-485C-8442-6B62EED51CFA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Score NEET PG/ViewModel/NotesQuizViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "reportQuestion()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5ECA4176-B85F-485C-8442-6B62EED51CFA - 9cbb624839afa893"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Score_NEET_PG.NotesQuizViewModel.reportQuestion() -&gt; ()"
+                  moduleName = "Score NEET PG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manojkuar/Desktop/Rahul1/Score%20MLE/Score%20NEET%20PG/ViewModel/NotesQuizViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "1492">
+               </Location>
+               <Location
+                  uuid = "5ECA4176-B85F-485C-8442-6B62EED51CFA - 757eeea97edec68c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Optional&lt;Score_NEET_PG.QuestionReportResponse&gt;, Score_NEET_PG.APIError&gt;) -&gt; () in Score_NEET_PG.NotesQuizViewModel.reportQuestion() -&gt; ()"
+                  moduleName = "Score NEET PG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manojkuar/Desktop/Rahul1/Score%20MLE/Score%20NEET%20PG/ViewModel/NotesQuizViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "536">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

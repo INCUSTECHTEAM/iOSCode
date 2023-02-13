@@ -50,21 +50,6 @@ class StoreManager: NSObject, ObservableObject  {
     
         guard let phoneNumber = UserDefaults.standard.string(forKey: UserDetailsKey.mobileNumber) else { return }
         
-//        let parameter: [String : Any] = [
-//            "mobileNumber" : phoneNumber,
-//            "bio" : Date().description
-//        ]
-//
-//        NetworkManager.shared.updateUserDetails(parameters: parameter) { result in
-//            switch result {
-//            case .success(_):
-//                print("Date Updated")
-//                self.subject.send()
-//            case .failure(_):
-//                print("Date Not Updated")
-//            }
-//        }
-        
         let parameter: [String : Any] = [
             "payment_expiry_date" : UserSession.userSessionInstance.createPackageExpirationDate()
         ]

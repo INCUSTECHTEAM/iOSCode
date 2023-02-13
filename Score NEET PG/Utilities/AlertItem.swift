@@ -33,6 +33,11 @@ enum AlertContext {
                                             message: Text("The data received from the server was invalid. Please try again or contact support."),
                                             dismissButton: .default(Text("Ok")))
     
+    static let decodeData       = AlertItem(title: Text("Error"),
+                                            message: Text("An error occurred while trying to decode the API response. Please try again or contact support."),
+                                            dismissButton: .default(Text("Ok")))
+    
+    
     static let invalidPhoneNumber = AlertItem(title: Text(""), message: Text("Please Enter Phone Number"), dismissButton: .default(Text("Okay")))
     
     static let termsNotAccepted = AlertItem(title: Text(""), message: Text("Please Accept the Term & Conditions"), dismissButton: .default(Text("Okay")))

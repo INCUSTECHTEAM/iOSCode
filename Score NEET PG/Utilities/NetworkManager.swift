@@ -102,6 +102,35 @@ class NetworkManager: NSObject {
     
     //MARK: - Updated GET USER DETAILS
     
+    func getUserFromAnotherServer(url: URL, mobileNumber: String, completed: @escaping (Result<User, APIError>) -> Void) {
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+       
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let _ =  error {
+                completed(.failure(.unableToComplete))
+                return
+            }
+            
+            guard let data = data else {
+                completed(.failure(.invalidData))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let decodedResponse = try decoder.decode(User.self, from: data)
+                completed(.success(decodedResponse))
+            } catch {
+                completed(.failure(.invalidData))
+            }
+        }
+        
+        task.resume()
+    }
+    
     func getUser(mobileNumber: String, completed: @escaping (Result<User, APIError>) -> Void) {
         
         guard let url = URL.user(mobileNumber: mobileNumber) else {

@@ -14,6 +14,8 @@ struct NotesQuizScreen: View {
     let questions: [QuestionDetail]
     @ObservedObject private var vm: NotesQuizViewModel
     
+    @State private var showReportAlert = false
+    
     var noteQuestionBookmarkStatus: (_ isBookmarked: Bool) -> Void
     var saveQuiz: () -> Void
     
@@ -69,6 +71,13 @@ struct NotesQuizScreen: View {
             
             Spacer()
         }
+        .alert(isPresented: $showReportAlert, content: {
+            Alert(title: Text("Are You Sure"), message: Text("Do you really want to report this Question?"), primaryButton: .default(Text("Report"), action: {
+                vm.reportQuestion()
+            }), secondaryButton: .cancel(Text("Dismiss")){
+                // Handle Cancel button action
+            })
+        })
         .onChange(of: vm.goBack, perform: { newValue in
             dismiss()
             noteQuestionBookmarkStatus(vm.setNoteBookmarkedStatus())
@@ -106,32 +115,52 @@ struct NotesQuizScreen: View {
             Text("Question")
                 .foregroundColor(.textColor)
                 .font(.custom(K.Font.sfUITextBold, size: 20))
-                .padding(.horizontal)
+                .padding(.leading)
             
             Spacer()
             
             
-            VStack {
-                Button {
-                    vm.prevQuestion()
-                } label: {
-                    Image(systemName: "arrowtriangle.backward.fill")
-                        .font(.title2)
-                        .foregroundColor(.white)
+//            VStack {
+//                Button {
+//                    vm.prevQuestion()
+//                } label: {
+//                    Image(systemName: "arrowtriangle.backward.fill")
+//                        .font(.title2)
+//                        .foregroundColor(.white)
+//                }
+//                .padding(.all, 10)
+//                .background {
+//                    Circle()
+//                        .foregroundColor(.orange)
+//                }
+//
+//
+//                Text("Prev")
+//                    .foregroundColor(.textColor)
+//                    .font(.custom(K.Font.sfUITextRegular, size: 12))
+//            } //: VSTACK
+//            .padding(.leading)
+//            .hidden()
+            
+            
+            Button {
+                showReportAlert.toggle()
+            } label: {
+                VStack {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundColor(.textColor)
+                        .frame(width: 25, height: 25)
+                    
+                    Text("Report")
+                        .foregroundColor(.textColor)
+                        .font(.custom(K.Font.sfUITextRegular, size: 12))
                 }
-                .padding(.all, 10)
-                .background {
-                    Circle()
-                        .foregroundColor(.orange)
-                }
-                
-                
-                Text("Prev")
-                    .foregroundColor(.textColor)
-                    .font(.custom(K.Font.sfUITextRegular, size: 12))
-            } //: VSTACK
-            .padding(.horizontal)
-            .hidden()
+            }
+            .padding(.trailing, 10)
+
+            
             
             VStack {
                 Button {
@@ -295,11 +324,11 @@ struct NotesQuizScreen: View {
     }
 }
 
-//struct NotesQuizScreen_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NotesQuizScreen(questions: [], delegate: <#NotesQuizDelegate?#>)
-//    }
-//}
+struct NotesQuizScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        NotesQuizScreen(questions: [], noteQuestionBookmarkStatus: { isBookmarked in }, saveQuiz: {})
+    }
+}
 
 
 

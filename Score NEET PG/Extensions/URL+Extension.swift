@@ -8,21 +8,23 @@
 import Foundation
 
 extension URL {
- 
+    
+    
+    
     static func getUserDetails() -> URL? {
-        return URL(string: "\(K.baseURL)user/get-details")
+        return URL(string: "https://vongo.incusquiz.com/vongo/user/get-details")
     }
     
     static func user(mobileNumber: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/user/\(mobileNumber)/")
+        return URL(string: "\(K.baseURL)progress/user/\(mobileNumber)/")
     }
     
     static func updateUserDetails() -> URL? {
-        return URL(string: "\(K.baseURL)user/update-details")
+        return URL(string: "https://vongo.incusquiz.com/vongo/user/update-details")
     }
     
     static func getSession(phoneNumber: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/sessions/\(phoneNumber)")
+        return URL(string: "\(K.baseURL)progress/sessions/\(phoneNumber)")
     }
 
     static func getChatBot() -> URL? {
@@ -30,15 +32,15 @@ extension URL {
     }
     
     static func getChatBotFavIcon() -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/data/getpa")
+        return URL(string: "\(K.baseURL)data/getpa")
     }
     
     static func getRightWrongQuestions(phoneNumber: String, isRightQuestion: Bool) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/getwrongrightquestions/\(phoneNumber)/\(isRightQuestion ? "1" : "0")/1")
+        return URL(string: "\(K.baseURL)progress/getwrongrightquestions/\(phoneNumber)/\(isRightQuestion ? "1" : "0")/1")
     }
     
     static func getShyfRightWrongQuestions(phoneNumber: String, category: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/getwrongrightquestionshyf/\(phoneNumber)/\(category)/1")
+        return URL(string: "\(K.baseURL)progress/getwrongrightquestionshyf/\(phoneNumber)/\(category)/1")
     }
     
     static func getVimeoVideoLink(vimeoId: String) -> URL? {
@@ -46,146 +48,150 @@ extension URL {
     }
     
     static func getMockTestList(phoneNumber: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/getusergtlist/\(phoneNumber)")
+        return URL(string: "\(K.baseURL)progress/getusergtlist/\(phoneNumber)")
     }
     
     static func getMockTestQuestions(phoneNumber: String, mockTestID: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/getusergtdetail/\(phoneNumber)/\(mockTestID)")
+        return URL(string: "\(K.baseURL)progress/getusergtdetail/\(phoneNumber)/\(mockTestID)")
     }
     
     static func deleteAllData(phoneNumber: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/user/\(phoneNumber)")
+        return URL(string: "\(K.baseURL)progress/user/\(phoneNumber)")
     }
     
     static func getSubjects() -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/data/getsubjectswithvideos")
+        return URL(string: "\(K.baseURL)data/getsubjectswithvideos")
     }
     
     static func getSubjectsWithPPT() -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/data/getsubjectswithppt")
+        return URL(string: "\(K.baseURL)data/getsubjectswithppt")
     }
  
     static func getHyfID(subjectID: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/data/getquestionswithvideoshyf/\(subjectID)")
+        return URL(string: "\(K.baseURL)data/getquestionswithvideoshyf/\(subjectID)")
     }
     
     static func getQuestionHYF(subjectID: String, hyfID: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/data/getquestionhyf/\(subjectID)/\(hyfID)")
+        return URL(string: "\(K.baseURL)data/getquestionhyf/\(subjectID)/\(hyfID)")
     }
     
     static func getQuestionsWithPPT(subjectID: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/data/getquestionswithppthyf/\(subjectID)")
+        return URL(string: "\(K.baseURL)data/getquestionswithppthyf/\(subjectID)")
     }
     
     static func getQuestionPPT(subjectID: String, id: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/data/getquestionhyf/\(subjectID)/\(id)")
+        return URL(string: "\(K.baseURL)data/getquestionhyf/\(subjectID)/\(id)")
     }
     
     static func getMockTests(mobileNumber: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/grandtest/getgtlist/\(mobileNumber)/?mode=gt")
+        return URL(string: "\(K.baseURL)grandtest/getgtlist/\(mobileNumber)/?mode=gt")
     }
     
     static func getSubjectTests() -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/grandtest/getsubjectslist/")
+        return URL(string: "\(K.baseURL)grandtest/getsubjectslist/")
     }
     
     static func getGtList(userId: String, gtId: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/getusergtlist/\(userId)/\(gtId)")
+        return URL(string: "\(K.baseURL)progress/getusergtlist/\(userId)/\(gtId)")
     }
     
     static func getGtAnalysis(userId: String, gtId: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/gtanalysis/\(userId)/\(gtId)")
+        return URL(string: "\(K.baseURL)progress/gtanalysis/\(userId)/\(gtId)")
     }
     
     static func getStAnalysis(userId: String, stId: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/stanalysis/\(userId)/\(stId)")
+        return URL(string: "\(K.baseURL)progress/stanalysis/\(userId)/\(stId)")
     }
     
     static func getGtLeaderboard(gtId: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/getgtleaderboard/?gt=\(gtId)")
+        return URL(string: "\(K.baseURL)progress/getgtleaderboard/?gt=\(gtId)")
     }
     
     static func getGtSubjectMock(userId: String, gtId: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/grandtest/getgtofasubject/\(gtId)/\(userId)/")
+        return URL(string: "\(K.baseURL)grandtest/getgtofasubject/\(gtId)/\(userId)/")
     }
     
     static func getUserGtDetail(userId: String, questionId: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/getusergtdetail/\(userId)/\(questionId)")
+        return URL(string: "\(K.baseURL)progress/getusergtdetail/\(userId)/\(questionId)")
     }
     
     static func getGtTimerDetail(userId: String, gtId: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/getusergtouterdetails/\(userId)/\(gtId)/")
+        return URL(string: "\(K.baseURL)progress/getusergtouterdetails/\(userId)/\(gtId)/")
     }
     
     static func getQuestionsList(userId: String, gtId: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/grandtest/getquestionslist/\(userId)/\(gtId)/")
+        return URL(string: "\(K.baseURL)grandtest/getquestionslist/\(userId)/\(gtId)/")
     }
     
     static func getQuestion(questionId: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/grandtest/getaquestion/\(questionId)")
+        return URL(string: "\(K.baseURL)grandtest/getaquestion/\(questionId)")
     }
     
     static func updateQuestionLastSeen() -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/updategtlastseen/")
+        return URL(string: "\(K.baseURL)progress/updategtlastseen/")
     }
     
     static func createGtRecord() -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/creategtrecord/")
+        return URL(string: "\(K.baseURL)progress/creategtrecord/")
     }
     
     static func getNotesList(userId: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/data/getnotessubjects/\(userId)/")
+        return URL(string: "\(K.baseURL)data/getnotessubjects/\(userId)/")
     }
     
     static func getNotesQuestionsList(userId: String, subjectId: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/getnotesbindata/\(userId)/\(subjectId)/")
+        return URL(string: "\(K.baseURL)progress/getnotesbindata/\(userId)/\(subjectId)/")
     }
     
     static func getNotesOfSubjectList(subjectId: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/data/getnotesofsubject/\(subjectId)")
+        return URL(string: "\(K.baseURL)data/getnotesofsubject/\(subjectId)")
     }
     
     static func getNoteQuestionData(subjectId: String, questionId: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/data/getquestionhyf/\(subjectId)/\(questionId)")
+        return URL(string: "\(K.baseURL)data/getquestionhyf/\(subjectId)/\(questionId)")
     }
     
     static func updateNoteLastSeen() -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/updatelastseennotes/")
+        return URL(string: "\(K.baseURL)progress/updatelastseennotes/")
     }
     
     static func topicWiseAnalysis(userId: String, subjectId: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/topicwiseanalysis/\(userId)/\(subjectId)/")
+        return URL(string: "\(K.baseURL)progress/topicwiseanalysis/\(userId)/\(subjectId)/")
     }
     
     static func grandTestAudio(audioId: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/grandtest/audio/\(audioId)/")
+        return URL(string: "\(K.baseURL)grandtest/audio/\(audioId)/")
     }
     
     static func notesTestAudio(audioId: String) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/data/audio/\(audioId)/")
+        return URL(string: "\(K.baseURL)data/audio/\(audioId)/")
     }
     
     static func grandtestAudioCreate() -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/grandtest/audio/")
+        return URL(string: "\(K.baseURL)grandtest/audio/")
     }
     
     static func noteTestAudioCreate() -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/data/audio/")
+        return URL(string: "\(K.baseURL)data/audio/")
     }
     
     static func searchNotes() -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/data/searchhyf")
+        return URL(string: "\(K.baseURL)data/searchhyf")
     }
     
     static func searchMockTest() -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/grandtest/searchquestion")
+        return URL(string: "\(K.baseURL)grandtest/searchquestion")
     }
     
     static func getSearchHistory(id: String? = nil) -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/index/\(id != nil ? "\(id ?? "")/" : "")")
+        return URL(string: "\(K.baseURL)progress/index/\(id != nil ? "\(id ?? "")/" : "")")
     }
     
     static func blockStatus() -> URL? {
-        return URL(string: "https://chatbot-backend.mbbscare.in/progress/blockstatus/")
+        return URL(string: "\(K.baseURL)progress/blockstatus/")
+    }
+    
+    static func noteQuestionReport() -> URL? {
+        return URL(string: "\(K.baseURL)progress/report/")
     }
 }

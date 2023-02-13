@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct NotesDataModel {
     var notesList: NotesResponse = NotesResponse()
@@ -15,7 +16,7 @@ struct NotesDataModel {
 class NotesViewModel: ObservableObject {
     
     @Published var notesDataModel : NotesDataModel = NotesDataModel()
-    
+    @Published var alertItem: AlertItem?
     //Call Api
     
     func getNotes() {
@@ -40,8 +41,20 @@ class NotesViewModel: ObservableObject {
                     }
                 }
             case .failure(let error):
-                self?.notesDataModel.isLoading = false
-                debugPrint(error)
+                DispatchQueue.main.async {
+                    self?.notesDataModel.isLoading = false
+                    if error == .invalidResponse {
+                        self?.alertItem = AlertContext.invalidResponse
+                    } else if error == .invalidData {
+                        self?.alertItem = AlertContext.invalidData
+                    } else if error == .unableToComplete {
+                        self?.alertItem = AlertContext.unableToComplete
+                    } else if error == .invalidURL {
+                        self?.alertItem = AlertContext.invalidURL
+                    } else {
+                        self?.alertItem = AlertContext.decodeData
+                    }
+                }
             }
         }
     }

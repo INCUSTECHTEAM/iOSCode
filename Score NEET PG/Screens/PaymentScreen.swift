@@ -11,6 +11,8 @@ import StoreKit
 struct PaymentScreen: View {
     // MARK: - PROPERTIES
     
+    @ObservedObject var inAppPurchase = InAppPurchaseManager.shared
+    
     //let paymentHandler = PaymentHandler()
     @State private var paymentSuccess = false
     let productID = "com.vongo.score.MLE.1.year.subscription"
@@ -18,6 +20,8 @@ struct PaymentScreen: View {
     @StateObject var storeManager: StoreManager
     
     @Environment(\.presentationMode) var presentationMode
+    
+    let courseEnvironment = CourseEnvironment.shared
     
     // MARK: - FUNCTIONS
     
@@ -39,103 +43,130 @@ struct PaymentScreen: View {
     
     // MARK: - BODY
     var body: some View {
-        VStack {
-            
-            CustomNavigationView()
-                .padding(15)
-            
-            Spacer()
-            
+        ZStack {
             VStack {
-                GroupBox {
-                    HStack {
-                        Image(systemName: "play.tv")
-                            .foregroundColor(.textColor)
-                            .frame(width: 24, height: 24)
-                        Text("Full Access")
-                            .foregroundColor(.textColor)
-                            .font(.custom(K.Font.sfUITextBold, size: 22))
-                    }
-                    .padding(.bottom)
+                
+                CustomNavigationView()
+                    .padding(15)
                     
-                    Text("Bot Tutor Video, Quiz Flashcard Courses Podcast, Notes, Mock Test")
-                        .foregroundColor(.textColor)
-                        .font(.custom(K.Font.sfUITextRegular, size: 18))
-                        .multilineTextAlignment(.center)
-                        .lineLimit(2)
-                        .padding(.bottom, 15)
-                    
-                    Text("Rs 17900 Only")
-                        .foregroundColor(.textColor)
-                        .font(.custom(K.Font.sfUITextBold, size: 24))
-                        .padding(.bottom, 15)
-                    
-                    Text("per Year Subscription")
-                        .foregroundColor(.textColor)
-                        .font(.custom(K.Font.sfUITextRegular, size: 18))
-                        .multilineTextAlignment(.center)
-                    
-                    Button(action: {
+                
+                Spacer()
+                
+                VStack {
+                    GroupBox {
+                        HStack {
+                            Image(systemName: "play.tv")
+                                .foregroundColor(.textColor)
+                                .frame(width: 24, height: 24)
+                            Text("Full Access")
+                                .foregroundColor(.textColor)
+                                .font(.custom(K.Font.sfUITextBold, size: 22))
+                        }
+                        .padding(.bottom)
                         
-                        if !storeManager.myProducts.isEmpty {
-                            storeManager.purchaseProduct(product: storeManager.myProducts[0])
+                        if courseEnvironment.isNeetPG() {
+                            Text("Bot Tutor Video, Quiz Flashcard Courses Podcast, Notes, Mock Test")
+                                .foregroundColor(.textColor)
+                                .font(.custom(K.Font.sfUITextRegular, size: 18))
+                                .multilineTextAlignment(.center)
+                                .lineLimit(2)
+                                .padding(.bottom, 15)
+                        } else {
+                            Text("""
+10000 MCQs Subject wise tests
+15000 High Yield Facts Notes of 13 Nursing Subjects
+AI Tutor 20000 MCQs to test knowledge of Notes
+30 Nursing officer Exam Grand tests
+""")
+                                .foregroundColor(.textColor)
+                                .font(.custom(K.Font.sfUITextRegular, size: 18))
+                                .multilineTextAlignment(.center)
+                                .padding(.bottom, 15)
                         }
                         
-//                        fetchPackage { package in
-//                            self.purchase(package: package)
-//                        }
+                        
+                        if courseEnvironment.isNeetPG() {
+                            Text("Rs 17900 Only")
+                                .foregroundColor(.textColor)
+                                .font(.custom(K.Font.sfUITextBold, size: 24))
+                                .padding(.bottom, 15)
+                        } else {
+                            Text("Rs 6500 Only")
+                                .foregroundColor(.textColor)
+                                .font(.custom(K.Font.sfUITextBold, size: 24))
+                                .padding(.bottom, 15)
+                        }
                         
                         
-                    }) {
-                        Text("Pay")
-                            .modifier(ButtonTextModifier())
-                            .frame(width: 120)
+                        Text("per Year Subscription")
+                            .foregroundColor(.textColor)
+                            .font(.custom(K.Font.sfUITextRegular, size: 18))
+                            .multilineTextAlignment(.center)
+                        
+                        Button(action: {
+                            
+//                            if !storeManager.myProducts.isEmpty {
+//                                storeManager.purchaseProduct(product: storeManager.myProducts[0])
+//                            }
+                            self.inAppPurchase.isLoading = true
+                            if courseEnvironment.isNeetPG() {
+                                self.inAppPurchase.purchase(product: inAppPurchase.products[0])
+                            } else {
+                                self.inAppPurchase.purchase(product: inAppPurchase.products[1])
+                            }
+                            
+                            
+                        }) {
+                            Text("Pay")
+                                .modifier(ButtonTextModifier())
+                                .frame(width: 120)
+                        }
+                        .modifier(ButtonRectangleModifier())
+                        
                     }
-                    .modifier(ButtonRectangleModifier())
+                    .padding()
+                    .groupBoxStyle(ColoredGroupBox())
+                    //.offset(y: -30)
                     
+                    HStack {
+                        Spacer()
+                        Text("Include All Taxes")
+                            .foregroundColor(.textColor)
+                            .font(.custom(K.Font.sfUITextRegular, size: 14))
+                            .padding(.horizontal)
+                            .offset(y: -20)
+                    }
                     
-//                    Button(action: {
-//                        restorePurchases()
-//                    }) {
-//                        Text("Restore Subscription")
-//                            .font(.custom(K.Font.sfUITextRegular, size: 14))
-//                            .foregroundColor(.textColor)
-//                    }
                     
                 }
-                .padding()
-                .groupBoxStyle(ColoredGroupBox())
-                //.offset(y: -30)
+                .offset(y: -30)
                 
-                HStack {
-                    Spacer()
-                    Text("Include All Taxes")
-                        .foregroundColor(.textColor)
-                        .font(.custom(K.Font.sfUITextRegular, size: 14))
-                        .padding(.horizontal)
-                        .offset(y: -20)
-                }
-                    
+                
+                
+                
+                Spacer()
                 
             }
-            .offset(y: -30)
+            .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
+            .onAppear(perform: {
+                
+                storeManager.getProducts(productIDs: [productID])
+                SKPaymentQueue.default().add(storeManager)
+                
+            })
+            .onReceive(storeManager.didSendRequest) { _ in
+                presentationMode.wrappedValue.dismiss()
+            } //: VSTACK
             
             
-            
-            
-            Spacer()
-            
-        }
-        .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
-        .onAppear(perform: {
-           
-            storeManager.getProducts(productIDs: [productID])
-            SKPaymentQueue.default().add(storeManager)
-            
-        })
-        .onReceive(storeManager.didSendRequest) { _ in
-            presentationMode.wrappedValue.dismiss()
-        }
+            if inAppPurchase.isLoading {
+                GeometryReader { proxy in
+                    Loader()
+                        .frame(width: proxy.size.width, height: proxy.size.height, alignment: .center)
+                }
+                .background(Color.black.opacity(0.45).edgesIgnoringSafeArea(.all))
+            }
+        } //: ZSTACK
         
     }
 }

@@ -17,6 +17,7 @@ struct UserDetailsUpdateScreen: View {
     @State private var lastName: String = ""
     @State private var isLoading: Bool = false
     @State private var isShowingPhotoPicker: Bool = false
+    @State private var action: Int? = 0
     
     @State var avatarImage = UIImage(systemName: "person.circle.fill")!
     @State var alertItem: AlertItem?
@@ -62,7 +63,11 @@ struct UserDetailsUpdateScreen: View {
             isLoading = false
             switch result {
             case .success(_):
-                authentication.updateValidation(success: true)
+                //authentication.updateValidation(success: true)
+                DispatchQueue.main.async {
+                    action = 1
+                }
+                
             case .failure(_):
                 print("Error")
             }
@@ -97,6 +102,12 @@ struct UserDetailsUpdateScreen: View {
         ZStack {
             VStack(alignment: .center, spacing: 30) {
                 Spacer()
+                
+                NavigationLink(destination: CourseSelectionScreen(isFromRegistration: true, navToHome: {
+                    authentication.updateValidation(success: true)
+                }), tag: 1, selection: $action) {
+                    EmptyView()
+                }
                 
                 //IMAGE UPDATE BUTTON
                 Button(action: {
