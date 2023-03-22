@@ -118,7 +118,6 @@
 		AF6DC9F12943420100397EE0 /* RecordingPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6DC9F02943420100397EE0 /* RecordingPlayerView.swift */; };
 		AF6DC9F32943CD8200397EE0 /* CustomInlineNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6DC9F22943CD8200397EE0 /* CustomInlineNavigationBar.swift */; };
 		AF6DC9F529444BDC00397EE0 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6DC9F429444BDB00397EE0 /* AudioManager.swift */; };
-		AF6DC9F82944EFB200397EE0 /* AudioPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = AF6DC9F72944EFB200397EE0 /* AudioPlayer */; };
 		AF6DCA3529475BB600397EE0 /* RecordingPlayerViewWithoutSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6DCA3429475BB600397EE0 /* RecordingPlayerViewWithoutSlider.swift */; };
 		AF796EF028A7F17F00B445A7 /* ImagesGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF796EEF28A7F17F00B445A7 /* ImagesGridView.swift */; };
 		AF796EFE28A8E51800B445A7 /* GridImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF796EFD28A8E51800B445A7 /* GridImageView.swift */; };
@@ -399,7 +398,6 @@
 			files = (
 				8196903C2892B4CF00FABD79 /* FirebaseAnalytics in Frameworks */,
 				8135A5CB289CEA01007B621E /* StoreKit.framework in Frameworks */,
-				AF6DC9F82944EFB200397EE0 /* AudioPlayer in Frameworks */,
 				819690402892B4CF00FABD79 /* FirebaseFirestore in Frameworks */,
 				8196903E2892B4CF00FABD79 /* FirebaseAuth in Frameworks */,
 				8141B849289290A700C63589 /* CountryPicker in Frameworks */,
@@ -775,7 +773,6 @@
 				8196903D2892B4CF00FABD79 /* FirebaseAuth */,
 				8196903F2892B4CF00FABD79 /* FirebaseFirestore */,
 				8180B1272894679C00B1331F /* Kingfisher */,
-				AF6DC9F72944EFB200397EE0 /* AudioPlayer */,
 			);
 			productName = "Score MLE";
 			productReference = 8141B81028925F5B00C63589 /* Score NEET PG.app */;
@@ -809,7 +806,6 @@
 				8141B847289290A700C63589 /* XCRemoteSwiftPackageReference "CountryPicker" */,
 				8196903A2892B4CF00FABD79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8180B1262894679C00B1331F /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				AF6DC9F62944EFB200397EE0 /* XCRemoteSwiftPackageReference "AudioPlayerSwift" */,
 			);
 			productRefGroup = 8141B81128925F5B00C63589 /* Products */;
 			projectDirPath = "";
@@ -1188,13 +1184,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Score NEET PG/Score MLE.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Score NEET PG/Preview Content\"";
 				DEVELOPMENT_TEAM = PC6UZ43XDV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Score-MLE-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Score NEET PG";
+				INFOPLIST_KEY_CFBundleDisplayName = "Score Learning App";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to your microphone to conduct recoding session for questions";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1210,7 +1206,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.1;
+				MARKETING_VERSION = 1.6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vongo.Score-MLE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1229,13 +1225,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Score NEET PG/Score MLE.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Score NEET PG/Preview Content\"";
 				DEVELOPMENT_TEAM = PC6UZ43XDV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Score-MLE-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Score NEET PG";
+				INFOPLIST_KEY_CFBundleDisplayName = "Score Learning App";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to your microphone to conduct recoding session for questions";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1251,7 +1247,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.1;
+				MARKETING_VERSION = 1.6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vongo.Score-MLE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1309,14 +1305,6 @@
 				kind = branch;
 			};
 		};
-		AF6DC9F62944EFB200397EE0 /* XCRemoteSwiftPackageReference "AudioPlayerSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tbaranes/AudioPlayerSwift.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1344,11 +1332,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8196903A2892B4CF00FABD79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
-		};
-		AF6DC9F72944EFB200397EE0 /* AudioPlayer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AF6DC9F62944EFB200397EE0 /* XCRemoteSwiftPackageReference "AudioPlayerSwift" */;
-			productName = AudioPlayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
