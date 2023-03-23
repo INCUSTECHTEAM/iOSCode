@@ -32,7 +32,8 @@ class InAppPurchaseManager: NSObject, ObservableObject {
     
     private let productIdentifiers: Set<String> = [
         "com.vongo.score.MLE.1.year.subscription",
-        "com.vongo.score.nurse.yearly.subscription"
+        "com.vongo.score.nurse.yearly.subscription",
+        "com.vongo.score.usmle1.yearly.subscription"
     ]
     
     private var productsRequest: SKProductsRequest?

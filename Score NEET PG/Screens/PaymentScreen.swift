@@ -64,14 +64,14 @@ struct PaymentScreen: View {
                         }
                         .padding(.bottom)
                         
-                        if courseEnvironment.isNeetPG() {
+                        if courseEnvironment.checkSelectedCourse() == Courses.NEETPG.rawValue {
                             Text("Bot Tutor Video, Quiz Flashcard Courses Podcast, Notes, Mock Test")
                                 .foregroundColor(.textColor)
                                 .font(.custom(K.Font.sfUITextRegular, size: 18))
                                 .multilineTextAlignment(.center)
                                 .lineLimit(2)
                                 .padding(.bottom, 15)
-                        } else {
+                        } else if courseEnvironment.checkSelectedCourse() == Courses.Nursing.rawValue {
                             Text("""
 10000 MCQs Subject wise tests
 15000 High Yield Facts Notes of 13 Nursing Subjects
@@ -82,16 +82,32 @@ AI Tutor 20000 MCQs to test knowledge of Notes
                                 .font(.custom(K.Font.sfUITextRegular, size: 18))
                                 .multilineTextAlignment(.center)
                                 .padding(.bottom, 15)
+                        } else {
+                            Text("""
+10000 MCQs Subject wise tests
+15000 High Yield Facts Notes of USMLE STEPS 1 Subjects
+AI Tutor 20000 MCQs to test knowledge of Notes
+USMLE STEPS officer Exam Grand tests
+""")
+                                .foregroundColor(.textColor)
+                                .font(.custom(K.Font.sfUITextRegular, size: 18))
+                                .multilineTextAlignment(.center)
+                                .padding(.bottom, 15)
                         }
                         
                         
-                        if courseEnvironment.isNeetPG() {
+                        if courseEnvironment.checkSelectedCourse() == Courses.NEETPG.rawValue {
                             Text("Rs 17900 Only")
                                 .foregroundColor(.textColor)
                                 .font(.custom(K.Font.sfUITextBold, size: 24))
                                 .padding(.bottom, 15)
-                        } else {
+                        } else if courseEnvironment.checkSelectedCourse() == Courses.Nursing.rawValue {
                             Text("Rs 6500 Only")
+                                .foregroundColor(.textColor)
+                                .font(.custom(K.Font.sfUITextBold, size: 24))
+                                .padding(.bottom, 15)
+                        } else {
+                            Text("Rs 8900 Only")
                                 .foregroundColor(.textColor)
                                 .font(.custom(K.Font.sfUITextBold, size: 24))
                                 .padding(.bottom, 15)
@@ -109,10 +125,12 @@ AI Tutor 20000 MCQs to test knowledge of Notes
 //                                storeManager.purchaseProduct(product: storeManager.myProducts[0])
 //                            }
                             self.inAppPurchase.isLoading = true
-                            if courseEnvironment.isNeetPG() {
+                            if courseEnvironment.checkSelectedCourse() == Courses.NEETPG.rawValue {
                                 self.inAppPurchase.purchase(product: inAppPurchase.products[0])
-                            } else {
+                            } else if courseEnvironment.checkSelectedCourse() == Courses.Nursing.rawValue {
                                 self.inAppPurchase.purchase(product: inAppPurchase.products[1])
+                            } else {
+                                self.inAppPurchase.purchase(product: inAppPurchase.products[2])
                             }
                             
                             

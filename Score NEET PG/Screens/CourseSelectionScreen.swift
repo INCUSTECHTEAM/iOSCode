@@ -71,10 +71,23 @@ struct CourseSelectionScreen: View {
     
     func getFetchUserInfoReleventFromReleventServer() {
         
+        var url: URL?
+        
         guard let phoneNumber = phoneNumber else { return }
         
+        let selectedCouse = CourseEnvironment.shared.checkSelectedCourse()
         
-        guard let url = CourseEnvironment.shared.isNeetPG() ? URL(string: "https://nurse-coach.mbbscare.in/progress/user/\(phoneNumber)/") : URL(string: "https://chatbot-backend.mbbscare.in/progress/user/\(phoneNumber)/") else { return }
+        if selectedCouse == Courses.NEETPG.rawValue {
+            url = URL(string: "https://chatbot-backend.mbbscare.in/progress/user/\(phoneNumber)/")
+        } else if selectedCouse == Courses.Nursing.rawValue {
+            url = URL(string: "https://nurse-coach.mbbscare.in/progress/user/\(phoneNumber)/")
+        } else if selectedCouse == Courses.USMLESTEP1.rawValue {
+            url = URL(string: "https://usmle-backend.mbbscare.in/progress/user/\(phoneNumber)/")
+        } else {
+            url = URL(string: "https://chatbot-backend.mbbscare.in/progress/user/\(phoneNumber)/")
+        }
+        
+        guard let url = url else { return }
         
         NetworkManager.shared.getUserFromAnotherServer(url: url, mobileNumber: phoneNumber) { result in
             switch result {
@@ -130,58 +143,92 @@ struct CourseSelectionScreen: View {
                 .scaledToFit()
                 .padding(.horizontal, 40)
             
-            HStack(alignment: .center, spacing: 10) {
-                Button {
-                    CourseEnvironment.shared.set(isNeetPG: true)
-                    updatePaymentStatus()
-                } label: {
-                    VStack {
-                        Image("doctor")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(.orangeColor)
-                            .padding(.vertical, 60)
-                            .padding(.horizontal, 50)
-                            .background {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(lineWidth: 1)
-                                    
-                            }
+            VStack(spacing: 0) {
+                HStack(alignment: .center, spacing: 10) {
+                    Button {
+                        CourseEnvironment.shared.set(course: .NEETPG)
+                        updatePaymentStatus()
+                    } label: {
+                        VStack {
+                            Image("doctor")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 80, height: 80)
+                                .foregroundColor(.orangeColor)
+                                .padding(.vertical, 20)
+                                .padding(.horizontal, 20)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(lineWidth: 1)
+                                        
+                                }
+                                
                             
-                        
-                        Text("NEETPG")
+                            Text("NEETPG")
+                        }
                     }
+                    .padding()
+                    
+                    
+                    Button {
+                        CourseEnvironment.shared.set(course: .Nursing)
+                        updatePaymentStatus()
+                    } label: {
+                        VStack {
+                            Image("nurse")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 80, height: 80)
+                                .foregroundColor(.orangeColor)
+                                .padding(.vertical, 20)
+                                .padding(.horizontal, 20)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(lineWidth: 1)
+                                        
+                                }
+                                
+                            
+                            Text("Nursing")
+                        }
+                    }
+                    .padding()
+                    
                 }
-                .padding()
+                .padding(.horizontal)
+                
+                HStack(alignment: .center) {
+                    Button {
+                        CourseEnvironment.shared.set(course: .USMLESTEP1)
+                        updatePaymentStatus()
+                    } label: {
+                        VStack {
+                            Image("statue-of-liberty")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 80, height: 80)
+                                .foregroundColor(.orangeColor)
+                                .tint(.orangeColor)
+                                .padding(.vertical, 20)
+                                .padding(.horizontal, 20)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(lineWidth: 1)
+                                        
+                                }
+                                
+                            
+                            Text("USMLE STEP 1")
+                        }
+                    }
+                    .padding()
+                    
+                }
+                //.padding()
                 
                 
-                Button {
-                    CourseEnvironment.shared.set(isNeetPG: false)
-                    updatePaymentStatus()
-                } label: {
-                    VStack {
-                        Image("nurse")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(.orangeColor)
-                            .padding(.vertical, 60)
-                            .padding(.horizontal, 50)
-                            .background {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(lineWidth: 1)
-                                    
-                            }
-                            
-                        
-                        Text("Nursing")
-                    }
-                }
-                .padding()
                 
             }
-            .padding()
             
             Spacer()
         }

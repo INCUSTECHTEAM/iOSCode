@@ -7,16 +7,22 @@
 
 import Foundation
 
+enum Courses: String {
+    case NEETPG = "NEETPG"
+    case Nursing = "Nursing"
+    case USMLESTEP1 = "USMLE STEP 1"
+}
+
 class CourseEnvironment {
     
     private init() { }
     static let shared = CourseEnvironment()
     
-    func set(isNeetPG: Bool) {
-        UserDefaults.standard.set(isNeetPG, forKey: "isNeetPG")
+    func set(course: Courses) {
+        UserDefaults.standard.set(course.rawValue, forKey: "selectedCourses")
     }
     
-    func isNeetPG() -> Bool {
-        return UserDefaults.standard.bool(forKey: "isNeetPG")
+    func checkSelectedCourse() -> String? {
+        return UserDefaults.standard.string(forKey: "selectedCourses")
     }
 }

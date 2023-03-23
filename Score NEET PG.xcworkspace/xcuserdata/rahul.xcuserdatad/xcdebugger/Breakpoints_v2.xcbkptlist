@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "E4188497-D91E-4FB3-BD04-15C8ED927542"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6A348559-07EF-4185-9707-A840234A677B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Score NEET PG/Screens/CourseSelectionScreen.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "427CD90F-0864-4345-834C-33A3339B3780"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Score NEET PG/Screens/CourseSelectionScreen.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "updatePaymentStatus()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "427CD90F-0864-4345-834C-33A3339B3780 - 8accc21c7e9afa1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Score_NEET_PG.CourseSelectionScreen.updatePaymentStatus() -&gt; ()"
+                  moduleName = "Score NEET PG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rahul/Desktop/Score-NEET-PG/Score%20NEET%20PG/Screens/CourseSelectionScreen.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "196">
+               </Location>
+               <Location
+                  uuid = "427CD90F-0864-4345-834C-33A3339B3780 - 7169e3bd63eadfc2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Score_NEET_PG.User, Score_NEET_PG.APIError&gt;) -&gt; () in Score_NEET_PG.CourseSelectionScreen.updatePaymentStatus() -&gt; ()"
+                  moduleName = "Score NEET PG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rahul/Desktop/Score-NEET-PG/Score%20NEET%20PG/Screens/CourseSelectionScreen.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "308">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AF202EF3-0948-4D2D-B6DE-A0D6FA94499F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Score NEET PG/Screens/CourseSelectionScreen.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "updatePaymentStatus()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "243941CE-7621-4089-A8D6-8EBAAB3497EE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Score NEET PG/Screens/CourseSelectionScreen.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "getFetchUserInfoReleventFromReleventServer()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "243941CE-7621-4089-A8D6-8EBAAB3497EE - eee5b52f89d95b1c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Score_NEET_PG.CourseSelectionScreen.getFetchUserInfoReleventFromReleventServer() -&gt; ()"
+                  moduleName = "Score NEET PG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rahul/Desktop/Score-NEET-PG/Score%20NEET%20PG/Screens/CourseSelectionScreen.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "2668">
+               </Location>
+               <Location
+                  uuid = "243941CE-7621-4089-A8D6-8EBAAB3497EE - eee5b52f89d95b1c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Score_NEET_PG.CourseSelectionScreen.getFetchUserInfoReleventFromReleventServer() -&gt; ()"
+                  moduleName = "Score NEET PG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rahul/Desktop/Score-NEET-PG/Score%20NEET%20PG/Screens/CourseSelectionScreen.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "2972">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AB0647F5-01C1-4661-9518-59A3F56C3708"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Score NEET PG/Utilities/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "getUser(mobileNumber:completed:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F046A755-8B73-4A57-B716-03FFAE6B171B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Score NEET PG/ViewModel/NotesViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "getNotes()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
