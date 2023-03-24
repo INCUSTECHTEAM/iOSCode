@@ -9,8 +9,10 @@ import Foundation
 import SwiftUI
 
 struct MockTestDataModel {
-    var tabs: [TopTab] = [.init(title: "Grand Test"),
-                                 .init(title: "Subject Test")]
+    var tabs: [TopTab] = [
+        .init(title: "Grand Test"),
+        .init(title: "Subject Test"),
+    ]
     var selectedTab: Int = 0
     var mockTests: MockTestResponse = MockTestResponse()
     var subjectTests: SubjectTestResponse = SubjectTestResponse()

@@ -121,7 +121,7 @@ struct Score_MLEApp: App {
             if authentication.isValidated || UserSession.userSessionInstance.isLoggedIn() {
 //                MainView()
 //                    .environmentObject(authentication)
-                TabBarScreen(currentTab: .mocktest)
+                TabBarScreen()
                     .environmentObject(authentication)
             } else {
                 OnboardScreen()

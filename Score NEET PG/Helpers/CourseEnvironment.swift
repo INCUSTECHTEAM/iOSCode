@@ -13,16 +13,19 @@ enum Courses: String {
     case USMLESTEP1 = "USMLE STEP 1"
 }
 
-class CourseEnvironment {
+class CourseEnvironment: ObservableObject {
     
     private init() { }
     static let shared = CourseEnvironment()
+    
+    @Published var refreshed = false
     
     func set(course: Courses) {
         UserDefaults.standard.set(course.rawValue, forKey: "selectedCourses")
     }
     
     func checkSelectedCourse() -> String? {
+        refreshed.toggle()
         return UserDefaults.standard.string(forKey: "selectedCourses")
     }
 }

@@ -79,14 +79,33 @@ struct TabBarScreen: View {
 
     @State var currentTab: NewTab = .mocktest
 
-    let tabs: [(NewTab, Image, String)] = [
+    var tabs: [(NewTab, Image, String)] = [
         (.mocktest, Image(uiImage: UIImage(named: "exam")!), "Mock Test"),
         (.notes, Image(uiImage: UIImage(named: "Notes")!), "AI Tutor"),
         (.videos, Image(uiImage: UIImage(named: "videoTab")!), "Videos"),
         (.search, Image(systemName: "magnifyingglass"), "Search"),
         (.setting, Image(uiImage: UIImage(named: "application")!), "Settings")
     ]
-
+    
+    
+    @State var filteredTabs: [(NewTab, Image, String)] = []
+    
+    @State var courseEnvironment = CourseEnvironment.shared
+    
+    
+    func updatingTabs() {
+        if courseEnvironment.checkSelectedCourse() == Courses.USMLESTEP1.rawValue {
+            filteredTabs = [
+                (.mocktest, Image(uiImage: UIImage(named: "exam")!), "Mock Test"),
+                (.notes, Image(uiImage: UIImage(named: "Notes")!), "AI Tutor"),
+                (.search, Image(systemName: "magnifyingglass"), "Search"),
+                (.setting, Image(uiImage: UIImage(named: "application")!), "Settings")
+            ]
+        } else {
+            filteredTabs = tabs
+        }
+    }
+    
     //MARK: -  BODY
     var body: some View {
         NavigationView {
@@ -106,32 +125,34 @@ struct TabBarScreen: View {
                 Spacer()
 
                 HStack(spacing: 0) {
-                    ForEach(tabs, id: \.0) { tab in
+                    ForEach(filteredTabs, id: \.0) { tab in
 
-                        Button(action: {
-                            withAnimation {
-                                currentTab = tab.0
-                            }
-                        }, label: {
-                            VStack {
-                                tab.1
-                                    .resizable()
-                                    .frame(width: 20, height: 20)
-                                    .foregroundColor(currentTab == tab.0 ? Color.orangeColor : .gray)
+                            Button(action: {
+                                withAnimation {
+                                    currentTab = tab.0
+                                }
+                            }, label: {
+                                VStack {
+                                    tab.1
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .foregroundColor(currentTab == tab.0 ? Color.orangeColor : .gray)
 
-                                Text(tab.2)
-                                    .font(.system(size: 10))
-                                    .foregroundColor(currentTab == tab.0 ? Color.orangeColor : .gray)
-                            }
-                            .padding(.vertical, 8)
-                            .frame(maxWidth: .infinity)
-                            .zIndex(currentTab == tab.0 ? 1 : 0)
-                        })
-                        .buttonStyle(PlainButtonStyle())
-
+                                    Text(tab.2)
+                                        .font(.system(size: 10))
+                                        .foregroundColor(currentTab == tab.0 ? Color.orangeColor : .gray)
+                                }
+                                .padding(.vertical, 8)
+                                .frame(maxWidth: .infinity)
+                                .zIndex(currentTab == tab.0 ? 1 : 0)
+                            })
+                            .buttonStyle(PlainButtonStyle())
                     }
                 }
                 .padding(.horizontal)
+                .onAppear {
+                    updatingTabs()
+                }
 
 
             }
@@ -139,6 +160,7 @@ struct TabBarScreen: View {
             .navigationBarTitleDisplayMode(currentTab == .setting ? .large : .inline)
             .navigationBarHidden(true)
             .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
+            
         }
         .navigationViewStyle(.stack)
     }
@@ -146,7 +168,7 @@ struct TabBarScreen: View {
 
 struct TabBarScreen_Previews: PreviewProvider {
     static var previews: some View {
-        TabBarScreen(currentTab: .mocktest)
+        TabBarScreen()
     }
 }
 

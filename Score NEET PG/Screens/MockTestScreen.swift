@@ -15,6 +15,7 @@ struct MockTestScreen: View {
     @StateObject var storeManager = StoreManager()
     @ObservedObject var inAppPurchase = InAppPurchaseManager.shared
     
+    private var courseEnvironment = CourseEnvironment.shared
     
     var body: some View {
         ZStack {
@@ -23,36 +24,58 @@ struct MockTestScreen: View {
                 CustomInlineNavigationBar(name: "Mock Test")
                 
                 VStack(spacing: 0) {
-                    TopTabView(tabs: mockTestVM.mockTestDataModel.tabs, selectedTab: $mockTestVM.mockTestDataModel.selectedTab)
+
+                    TopTabView(tabs: courseEnvironment.checkSelectedCourse() == Courses.USMLESTEP1.rawValue ? [.init(title: "Practice Test")] : mockTestVM.mockTestDataModel.tabs, selectedTab: courseEnvironment.checkSelectedCourse() == Courses.USMLESTEP1.rawValue ? .constant(0) : $mockTestVM.mockTestDataModel.selectedTab)
                     
                     //Divider()
                 } // HEADER
                 
                 
+                
                 List {
-                    ForEach(mockTestVM.mockTestDataModel.selectedTab == 0 ? mockTestVM.mockTestDataModel.mockTests.indices : mockTestVM.mockTestDataModel.subjectTests.indices, id: \.self) { index in
-                        if mockTestVM.mockTestDataModel.selectedTab == 0 {
-                            GrandTestCellView(mockTestResponseElement: mockTestVM.mockTestDataModel.mockTests[index], isTrial: index == 0 ? true : false)
-                                .onTapGesture {
-                                    if paymentStatus == false && !(index == 0) {
-                                        isPresentedPaymentScreen = true
-                                    }
-                                }
-                            
-                        } else {
+                    if courseEnvironment.checkSelectedCourse() == Courses.USMLESTEP1.rawValue {
+                        
+                        ForEach(mockTestVM.mockTestDataModel.subjectTests.indices, id: \.self) { index in
                             SubjectTestCellView(subject: mockTestVM.mockTestDataModel.subjectTests[index], isTrial: index == 0 ? true : false)
                                 .onTapGesture {
                                     if paymentStatus == false && !(index == 0) {
                                         isPresentedPaymentScreen = true
                                     }
                                 }
+                        }
+                        .listRowInsets(.none)
+                        .listRowBackground(Color.backgroundColor)
+                        .listRowSeparator(.hidden)
+                        
+                    } else {
+                        
+                        ForEach(mockTestVM.mockTestDataModel.selectedTab == 0 ? mockTestVM.mockTestDataModel.mockTests.indices : mockTestVM.mockTestDataModel.subjectTests.indices, id: \.self) { index in
+                            if mockTestVM.mockTestDataModel.selectedTab == 0 {
+                                GrandTestCellView(mockTestResponseElement: mockTestVM.mockTestDataModel.mockTests[index], isTrial: index == 0 ? true : false)
+                                    .onTapGesture {
+                                        if paymentStatus == false && !(index == 0) {
+                                            isPresentedPaymentScreen = true
+                                        }
+                                    }
+                                
+                            } else {
+                                SubjectTestCellView(subject: mockTestVM.mockTestDataModel.subjectTests[index], isTrial: index == 0 ? true : false)
+                                    .onTapGesture {
+                                        if paymentStatus == false && !(index == 0) {
+                                            isPresentedPaymentScreen = true
+                                        }
+                                    }
+                                
+                            }
                             
                         }
+                        .listRowInsets(.none)
+                        .listRowBackground(Color.backgroundColor)
+                        .listRowSeparator(.hidden)
+                        
                         
                     }
-                    .listRowInsets(.none)
-                    .listRowBackground(Color.backgroundColor)
-                    .listRowSeparator(.hidden)
+                    
                     
                     
                 }
@@ -60,8 +83,13 @@ struct MockTestScreen: View {
                 .id(mockTestVM.mockTestDataModel.refreshCounter)
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now()+0.2, execute: {
-                        mockTestVM.getUserDetails()
-                        mockTestVM.getSubjectTests()
+                        if courseEnvironment.checkSelectedCourse() == Courses.USMLESTEP1.rawValue {
+                            mockTestVM.getSubjectTests()
+                        } else {
+                            mockTestVM.getUserDetails()
+                            mockTestVM.getSubjectTests()
+                        }
+                        
                     })
                 }
                 
@@ -76,10 +104,22 @@ struct MockTestScreen: View {
             .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
             .navigationBarTitleDisplayMode(.inline)
             
-            Text("Sorry, No \(mockTestVM.mockTestDataModel.selectedTab == 0 ? "Questions" : "Subject Test") Available")
-                .font(.custom(K.Font.sfUITextRegular, size: 15))
-                .foregroundColor(.textColor)
-                .opacity(mockTestVM.mockTestDataModel.selectedTab == 0 && mockTestVM.mockTestDataModel.mockTests.isEmpty && mockTestVM.mockTestDataModel.isLoading == false ? 1 : mockTestVM.mockTestDataModel.selectedTab == 1 && mockTestVM.mockTestDataModel.subjectTests.isEmpty && mockTestVM.mockTestDataModel.isLoading == false ? 1 : 0)
+            if courseEnvironment.checkSelectedCourse() == Courses.USMLESTEP1.rawValue  {
+                
+                Text("Sorry, No Practice Test Available")
+                    .font(.custom(K.Font.sfUITextRegular, size: 15))
+                    .foregroundColor(.textColor)
+                    .opacity(mockTestVM.mockTestDataModel.subjectTests.isEmpty && mockTestVM.mockTestDataModel.isLoading == false ? 1 : 0)
+                
+            } else {
+                
+                Text("Sorry, No \(mockTestVM.mockTestDataModel.selectedTab == 0 ? "Questions" : "Subject Test") Available")
+                    .font(.custom(K.Font.sfUITextRegular, size: 15))
+                    .foregroundColor(.textColor)
+                    .opacity(mockTestVM.mockTestDataModel.selectedTab == 0 && mockTestVM.mockTestDataModel.mockTests.isEmpty && mockTestVM.mockTestDataModel.isLoading == false ? 1 : mockTestVM.mockTestDataModel.selectedTab == 1 && mockTestVM.mockTestDataModel.subjectTests.isEmpty && mockTestVM.mockTestDataModel.isLoading == false ? 1 : 0)
+            }
+            
+           
             
             if self.mockTestVM.mockTestDataModel.isLoading {
                 GeometryReader { proxy in
