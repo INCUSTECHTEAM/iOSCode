@@ -26,7 +26,10 @@ class TopicViewModel: ObservableObject {
         topicDataModel.isLoading = true
         guard let phoneNumber = UserDefaults.standard.string(forKey: UserDetailsKey.mobileNumber) else { return }
         
-        guard let url = URL.topicWiseAnalysis(userId: phoneNumber, subjectId: subjectId) else { return }
+        var url = URL.topicWiseAnalysis(userId: phoneNumber, subjectId: subjectId) 
+    
+        
+        guard let url = url else { return }
         
         var urlRequest = URLRequest(url: url)
         

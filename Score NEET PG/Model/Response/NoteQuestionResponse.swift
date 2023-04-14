@@ -19,6 +19,7 @@ struct NoteQuestionResponseElement: Codable {
     var course: JSONNull?
     var audio: [AudioData]?
     var questions: [QuestionDetail]?
+    var mantra: String?
 
     enum CodingKeys: String, CodingKey {
         case id, fact, image, cat, video
@@ -28,6 +29,7 @@ struct NoteQuestionResponseElement: Codable {
         case course
         case audio
         case questions
+        case mantra
     }
 }
 

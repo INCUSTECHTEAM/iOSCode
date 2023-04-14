@@ -22,16 +22,25 @@ struct K {
     static let neetPGBaseURL = "https://chatbot-backend.mbbscare.in/"
     static let nursingBaseURL = "https://nurse-coach.mbbscare.in/"
     static let usmleStep1URL = "https://usmle-backend.mbbscare.in/"
+    static let usmleStep2URL  = "https://usmle-2-backend.mbbscare.in/"
+    
+    static var byPassBaseURL = ""
     
     static var baseURL: String {
-        switch CourseEnvironment.shared.checkSelectedCourse() {
-        case Courses.NEETPG.rawValue:
-            return K.neetPGBaseURL
-        case Courses.Nursing.rawValue:
-            return K.nursingBaseURL
-        case Courses.USMLESTEP1.rawValue:
-            return K.usmleStep1URL
-        default: return K.neetPGBaseURL
+        if !byPassBaseURL.isEmpty {
+            return byPassBaseURL
+        } else {
+            switch CourseEnvironment.shared.checkSelectedCourse() {
+            case Courses.NEETPG.rawValue:
+                return K.neetPGBaseURL
+            case Courses.Nursing.rawValue:
+                return K.nursingBaseURL
+            case Courses.USMLESTEP1.rawValue:
+                return K.usmleStep1URL
+            case Courses.USMLESTEP2.rawValue:
+                return K.usmleStep2URL
+            default: return K.neetPGBaseURL
+            }
         }
     }
     

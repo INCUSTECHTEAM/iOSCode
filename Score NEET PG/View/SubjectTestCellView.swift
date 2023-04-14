@@ -112,9 +112,11 @@ struct SubjectTestCellView: View {
     }
 }
 
+/*
 struct SubjectTestCellView_Previews: PreviewProvider {
     static var previews: some View {
         let subject = SubjectTestResponseElement(name: "JJ", id: 1)
         SubjectTestCellView(subject: subject)
     }
 }
+*/

@@ -93,15 +93,15 @@ struct SettingScreen: View {
             ZStack {
                 
                 VStack(spacing: 20) {
-                    HStack {
-                        
-                        Text("Setting")
-                            .font(.custom(K.Font.sfUITextBold, size: 32))
-                            .foregroundColor(.textColor)
-                            .padding(.all, 10)
-                        
-                        Spacer()
-                    }
+//                    HStack {
+//
+//                        Text("Setting")
+//                            .font(.custom(K.Font.sfUITextBold, size: 32))
+//                            .foregroundColor(.textColor)
+//                            .padding(.all, 10)
+//
+//                        Spacer()
+//                    }
                     
                     GroupBox() {
                         VStack {
@@ -241,9 +241,10 @@ struct SettingScreen: View {
                     
                     Spacer()
                 }
-                .padding()
-//                .navigationTitle("Settings")
-//                .navigationBarTitleDisplayMode(.large)
+                .padding(.horizontal)
+                .padding(.bottom)
+                .navigationTitle("Settings")
+                .navigationBarTitleDisplayMode(.large)
                 .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
                 .alert("Delete Account", isPresented: $showingAlert) {
                     Button(role: .cancel, action: {

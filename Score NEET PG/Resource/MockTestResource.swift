@@ -13,7 +13,13 @@ struct MockTestResource {
     
     func getMocktestList(completionHandler: @escaping(Result<MockTestResponse?, APIError>) -> Void) {
         
+        
+        
         guard let phoneNumber = phoneNumber else { return }
+        
+        if !K.byPassBaseURL.isEmpty {
+            K.byPassBaseURL = ""
+        }
         
         guard let url = URL.getMockTests(mobileNumber: phoneNumber) else { return }
         
@@ -33,6 +39,10 @@ struct MockTestResource {
     
     func getSubjectTestList(completionHandler: @escaping(Result<SubjectTestResponse?, APIError>) -> Void) {
         
+        if !K.byPassBaseURL.isEmpty {
+            K.byPassBaseURL = ""
+        }
+        
         guard let url = URL.getSubjectTests() else { return }
         
         var urlRequest = URLRequest(url: url)
@@ -48,4 +58,40 @@ struct MockTestResource {
         }
         
     }
+    
+    
+    func getQBStep1(completionHandler: @escaping (Result<SubjectTestResponse?, APIError>) -> Void) {
+        
+        guard let url = URL.getQBStep1SubjectTests() else { return }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        
+        HttpUtility.shared.postData(request: urlRequest, resultType: SubjectTestResponse.self) { result in
+            switch result {
+            case .success(let response):
+                completionHandler(.success(response))
+            case .failure(let error):
+                completionHandler(.failure(error))
+            }
+        }
+    }
+    
+    func getQBStep2(completionHandler: @escaping (Result<SubjectTestResponse?, APIError>) -> Void) {
+        
+        guard let url = URL.getQBStep2SubjectTests() else { return }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        
+        HttpUtility.shared.postData(request: urlRequest, resultType: SubjectTestResponse.self) { result in
+            switch result {
+            case .success(let response):
+                completionHandler(.success(response))
+            case .failure(let error):
+                completionHandler(.failure(error))
+            }
+        }
+    }
+    
 }

@@ -16,6 +16,8 @@ struct NotesQuestionsScreen: View {
     var isFrom: questionIsFrom
     @State var isButtonPressed = false
     @State var isPresentNoteQuiz = false
+    @State var showIknowButtons = false
+    let courseSelection = CourseEnvironment.shared
     
     init(subjectId: String, isFrom: questionIsFrom) {
         self.subjectId = subjectId
@@ -119,36 +121,13 @@ struct NotesQuestionsScreen: View {
                 .padding(.all)
                 
                 
-                HStack(spacing: 20) {
-                    
-                    
-                    Button {
-                        if noteQuestionsVM.noteQuestionDataModel.question.questions?.isEmpty == false {
-                            isPresentNoteQuiz = true
-                            return
-                        }
-                        
-                        noteQuestionsVM.updateIknowOrBookmarked(subjectId: subjectId, isBookmarked: false)
-                    } label: {
-                        Text("Next")
-                            .font(.custom(K.Font.avenir, size: 16))
-                            .fontWeight(.medium)
-                            .frame(width: UIScreen.main.bounds.size.width / 2.7)
-                            .padding()
-                            .background {
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke()
-                                    .foregroundColor(.orangeColor)
-                            }
-                    }
-                    
-                    
-                    
-                    
-                    Spacer()
-                    
-                } //: MIDDLE
-                .padding(.all)
+                if courseSelection.checkSelectedCourse() == Courses.USMLESTEP1.rawValue || courseSelection.checkSelectedCourse() == Courses.USMLESTEP2.rawValue { 
+                    bottomButtons()
+                } else {
+                    bottomButtonsForNeet()
+                        .padding()
+                }
+                
                 
                 if isStaff {
                     Spacer(minLength: 60)
@@ -203,12 +182,86 @@ struct NotesQuestionsScreen: View {
                         }
                     })
                 }
-
+                
                 
             }
         }
         
     }
+    
+    
+    @ViewBuilder
+    func bottomButtonsForNeet() -> some View {
+        HStack(spacing: 20) {
+            Button {
+                if noteQuestionsVM.noteQuestionDataModel.question.questions?.isEmpty == false {
+                    isPresentNoteQuiz = true
+                    return
+                }
+                
+                noteQuestionsVM.updateIknowOrBookmarked(subjectId: subjectId, isBookmarked: false)
+            } label: {
+                Text("Next")
+                    .font(.custom(K.Font.avenir, size: 16))
+                    .fontWeight(.medium)
+                    .frame(width: UIScreen.main.bounds.size.width / 2.7)
+                    .padding()
+                    .background {
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke()
+                            .foregroundColor(.orangeColor)
+                    }
+            }
+            
+            Spacer()
+            
+        } //: MIDDLE
+    }
+    
+    
+    @ViewBuilder
+    func bottomButtons() -> some View {
+        HStack {
+            if isFrom != .bookmared {
+                Button {
+                    noteQuestionsVM.updateIknowOrBookmarked(subjectId: subjectId, isBookmarked: true)
+                } label: {
+                    Text("Bookmark")
+                        .font(.custom(K.Font.avenir, size: 16))
+                        .fontWeight(.medium)
+                        .frame(width: UIScreen.main.bounds.size.width / 2.7)
+                        .padding()
+                        .background {
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke()
+                                .foregroundColor(.orangeColor)
+                        }
+                }
+                
+            }
+            
+            Spacer()
+            
+            if isFrom != .iKnow {
+                Button {
+                    noteQuestionsVM.updateIknowOrBookmarked(subjectId: subjectId, isBookmarked: false)
+                } label: {
+                    Text("I Know")
+                        .font(.custom(K.Font.avenir, size: 16))
+                        .fontWeight(.medium)
+                        .frame(width: UIScreen.main.bounds.size.width / 2.7)
+                        .padding()
+                        .background {
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke()
+                                .foregroundColor(.orangeColor)
+                        }
+                }
+            }
+        }
+        .padding()
+    }
+    
 }
 
 struct NotesQuestionsScreen_Previews: PreviewProvider {

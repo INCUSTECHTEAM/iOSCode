@@ -8,10 +8,12 @@
 import Foundation
 import SwiftUI
 
+/*
 struct MockTestDataModel {
     var tabs: [TopTab] = [
         .init(title: "Grand Test"),
-        .init(title: "Subject Test"),
+        .init(title: "PYQs QB"),
+        .init(title: "QB Step 1")
     ]
     var selectedTab: Int = 0
     var mockTests: MockTestResponse = MockTestResponse()
@@ -19,18 +21,29 @@ struct MockTestDataModel {
     var isLoading: Bool = false
     var refreshCounter = 0
 }
-
+*/
+ 
 class MockTestViewModel: ObservableObject {
     
-   
+    @Published var tabs: [TopTab] = [
+        .init(title: "Grand Test"),
+        .init(title: "PYQs QB"),
+        .init(title: "QB Step 1")
+    ]
+    @Published var selectedTab: Int = 0
+    @Published var mockTests: MockTestResponse = MockTestResponse()
+    @Published var subjectTests: SubjectTestResponse = SubjectTestResponse()
+   // @Published var qbStepTests: SubjectTestResponse = SubjectTestResponse()
+    @Published var isLoading: Bool = false
+    @Published var refreshCounter = 0
     
-    @Published var mockTestDataModel: MockTestDataModel = MockTestDataModel()
+    //@Published var mockTestDataModel: MockTestDataModel = MockTestDataModel()
     let mockTestResource: MockTestResource = MockTestResource()
     @Published var alertItem: AlertItem?
     
     func getUserDetails() {
         DispatchQueue.main.async {
-            self.mockTestDataModel.isLoading = true
+            self.isLoading = true
         }
         
         guard let phoneNumber = UserDefaults.standard.string(forKey: UserDetailsKey.mobileNumber) else { return }
@@ -39,7 +52,7 @@ class MockTestViewModel: ObservableObject {
             switch result {
             case .success(let data):
                 DispatchQueue.main.async {
-                    self.mockTestDataModel.isLoading = false
+                    self.isLoading = false
                     UserSession.userSessionInstance.setSubscriptionExpiry(expiryDate: data.paymentExpiryDate ?? "")
                     if let staff = data.is_staff {
                         withAnimation {
@@ -63,7 +76,7 @@ class MockTestViewModel: ObservableObject {
                 
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self.mockTestDataModel.isLoading = false
+                    self.isLoading = false
                     if error == .invalidResponse {
                         self.alertItem = AlertContext.invalidResponse
                     } else if error == .invalidData {
@@ -84,33 +97,33 @@ class MockTestViewModel: ObservableObject {
     
     func getMockTests() {
         DispatchQueue.main.async {
-            self.mockTestDataModel.isLoading = true
-            self.mockTestDataModel.mockTests = []
+            self.isLoading = true
+            self.mockTests = []
         }
         
         mockTestResource.getMocktestList { [weak self] (result) in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
-                    self?.mockTestDataModel.refreshCounter += 1
-                    print(self?.mockTestDataModel.refreshCounter)
-                    self?.mockTestDataModel.isLoading = false
+                    self?.refreshCounter += 1
+                    print(self?.refreshCounter)
+                    self?.isLoading = false
                     if let response {
                         if paymentStatus == false {
                             if let last = response.last {
-                                self?.mockTestDataModel.mockTests = response
-                                self?.mockTestDataModel.mockTests[0] = last
-                                self?.mockTestDataModel.mockTests.removeLast()
+                                self?.mockTests = response
+                                self?.mockTests[0] = last
+                                self?.mockTests.removeLast()
                             }
                         } else {
-                            self?.mockTestDataModel.mockTests = response
+                            self?.mockTests = response
                         }
                         
                     }
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self?.mockTestDataModel.isLoading = false
+                    self?.isLoading = false
                     if error == .invalidResponse {
                         self?.alertItem = AlertContext.invalidResponse
                     } else if error == .invalidData {
@@ -129,22 +142,22 @@ class MockTestViewModel: ObservableObject {
     
     func getSubjectTests() {
         DispatchQueue.main.async {
-            self.mockTestDataModel.isLoading = true
-            self.mockTestDataModel.subjectTests = []
+            self.isLoading = true
+            self.subjectTests = []
         }
         
         mockTestResource.getSubjectTestList { [weak self] (result) in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
-                    self?.mockTestDataModel.isLoading = false
+                    self?.isLoading = false
                     if let response {
-                        self?.mockTestDataModel.subjectTests = response
+                        self?.subjectTests = response
                     }
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self?.mockTestDataModel.isLoading = false
+                    self?.isLoading = false
                     if error == .invalidResponse {
                         self?.alertItem = AlertContext.invalidResponse
                     } else if error == .invalidData {
@@ -160,5 +173,81 @@ class MockTestViewModel: ObservableObject {
             }
         }
     }
+    
+    func getQBStep1() {
+        DispatchQueue.main.async {
+            self.isLoading = true
+            self.subjectTests = []
+        }
+        
+        mockTestResource.getQBStep1 { [weak self] (result) in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    self?.isLoading = false
+                    if let response {
+                        self?.subjectTests = response
+                    }
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.isLoading = false
+                    if error == .invalidResponse {
+                        self?.alertItem = AlertContext.invalidResponse
+                    } else if error == .invalidData {
+                        self?.alertItem = AlertContext.invalidData
+                    } else if error == .unableToComplete {
+                        self?.alertItem = AlertContext.unableToComplete
+                    } else if error == .invalidURL {
+                        self?.alertItem = AlertContext.invalidURL
+                    } else {
+                        self?.alertItem = AlertContext.decodeData
+                    }
+                }
+            }
+        }
+        
+        
+    }
+    
+    
+    
+    
+    func getQBStep2() {
+        DispatchQueue.main.async {
+            self.isLoading = true
+            self.subjectTests = []
+        }
+        
+        mockTestResource.getQBStep2 { [weak self] (result) in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    self?.isLoading = false
+                    if let response {
+                        self?.subjectTests = response
+                    }
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.isLoading = false
+                    if error == .invalidResponse {
+                        self?.alertItem = AlertContext.invalidResponse
+                    } else if error == .invalidData {
+                        self?.alertItem = AlertContext.invalidData
+                    } else if error == .unableToComplete {
+                        self?.alertItem = AlertContext.unableToComplete
+                    } else if error == .invalidURL {
+                        self?.alertItem = AlertContext.invalidURL
+                    } else {
+                        self?.alertItem = AlertContext.decodeData
+                    }
+                }
+            }
+        }
+        
+        
+    }
+    
     
 }

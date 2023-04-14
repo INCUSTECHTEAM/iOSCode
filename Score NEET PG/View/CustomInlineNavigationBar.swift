@@ -45,6 +45,28 @@ struct CustomInlineNavigationBar: View {
                     .padding()
                 }
             }
+            .overlay(alignment: .leading) {
+                if name != "Search" {
+                    NavigationLink {
+                        SettingScreen()
+                    } label: {
+                        VStack(spacing: 0) {
+                            Image(systemName: "gear")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor(.orangeColor)
+                                .frame(width: 30, height: 30)
+                            
+                            Text("Setting")
+                                .font(.custom(K.Font.sfUITextRegular, size: 13))
+                                .foregroundColor(.orangeColor)
+                        }
+                        .padding()
+                    }
+                }
+                  
+                
+            }
         } //: ZSTACK
         .background(Color.backgroundColor)
     }

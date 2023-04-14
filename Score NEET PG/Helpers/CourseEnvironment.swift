@@ -11,6 +11,7 @@ enum Courses: String {
     case NEETPG = "NEETPG"
     case Nursing = "Nursing"
     case USMLESTEP1 = "USMLE STEP 1"
+    case USMLESTEP2 = "USMLE STEP 2"
 }
 
 class CourseEnvironment: ObservableObject {

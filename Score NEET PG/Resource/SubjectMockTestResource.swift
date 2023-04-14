@@ -14,7 +14,9 @@ struct SubjectMockTestResource {
     func getMocktests(gtId: String, completionHandler: @escaping(Result<MockTestResponse?, APIError>) -> Void) {
         guard let phoneNumber = phoneNumber else { return }
         
-        guard let url = URL.getGtSubjectMock(userId: phoneNumber, gtId: gtId) else { return }
+        var url = URL.getGtSubjectMock(userId: phoneNumber, gtId: gtId)
+        
+        guard let url = url else { return }
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"

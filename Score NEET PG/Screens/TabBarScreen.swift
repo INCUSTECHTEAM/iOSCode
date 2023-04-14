@@ -13,7 +13,7 @@ enum NewTab: String {
     case notes = "Notes"
     case videos = "Videos"
     case search = "Search"
-    case setting = "Setting"
+    case audioMantra = "Audio Mantra"
 }
 
 //struct TabBarScreen: View {
@@ -84,7 +84,7 @@ struct TabBarScreen: View {
         (.notes, Image(uiImage: UIImage(named: "Notes")!), "AI Tutor"),
         (.videos, Image(uiImage: UIImage(named: "videoTab")!), "Videos"),
         (.search, Image(systemName: "magnifyingglass"), "Search"),
-        (.setting, Image(uiImage: UIImage(named: "application")!), "Settings")
+        (.audioMantra, Image(uiImage: UIImage(named: "live")!), "Audio Mantra")
     ]
     
     
@@ -94,12 +94,12 @@ struct TabBarScreen: View {
     
     
     func updatingTabs() {
-        if courseEnvironment.checkSelectedCourse() == Courses.USMLESTEP1.rawValue {
+        if courseEnvironment.checkSelectedCourse() == Courses.USMLESTEP1.rawValue || courseEnvironment.checkSelectedCourse() == Courses.USMLESTEP2.rawValue {
             filteredTabs = [
                 (.mocktest, Image(uiImage: UIImage(named: "exam")!), "Mock Test"),
                 (.notes, Image(uiImage: UIImage(named: "Notes")!), "AI Tutor"),
                 (.search, Image(systemName: "magnifyingglass"), "Search"),
-                (.setting, Image(uiImage: UIImage(named: "application")!), "Settings")
+                (.audioMantra, Image(uiImage: UIImage(named: "application")!), "Audio Mantra")
             ]
         } else {
             filteredTabs = tabs
@@ -119,8 +119,8 @@ struct TabBarScreen: View {
                     SubjectsScreen()
                 case .search:
                     SearchScreen()
-                case .setting:
-                    SettingScreen()
+                case .audioMantra:
+                    AudioMantraListScreen()
                 }
                 Spacer()
 
@@ -152,12 +152,14 @@ struct TabBarScreen: View {
                 .padding(.horizontal)
                 .onAppear {
                     updatingTabs()
+                    K.byPassBaseURL = ""
                 }
 
 
             }
             .navigationBarTitle(currentTab.rawValue)
-            .navigationBarTitleDisplayMode(currentTab == .setting ? .large : .inline)
+            .navigationBarTitleDisplayMode(.inline)
+            //.navigationBarTitleDisplayMode(currentTab == .setting ? .large : .inline)
             .navigationBarHidden(true)
             .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
             

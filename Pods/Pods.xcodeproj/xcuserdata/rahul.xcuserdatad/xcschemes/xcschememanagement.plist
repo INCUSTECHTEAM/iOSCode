@@ -4,31 +4,33 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AWSCognitoIdentityProvider.xcscheme_^#shared#^_</key>
+		<key>AWSCognitoIdentityProvider.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>AWSCognitoIdentityProviderASF.xcscheme_^#shared#^_</key>
+		<key>AWSCognitoIdentityProviderASF.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>AWSCore.xcscheme_^#shared#^_</key>
+		<key>AWSCore.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>AWSS3.xcscheme_^#shared#^_</key>
+		<key>AWSS3.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>Pods-Score NEET PG.xcscheme_^#shared#^_</key>
+		<key>Pods-Score NEET PG.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict/>
 </dict>
 </plist>

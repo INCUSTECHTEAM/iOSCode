@@ -89,6 +89,8 @@ class NoteQuestiosnViewModel: ObservableObject {
                                                 subjectName: Int(subjectId),
                                                 user: Int(phoneNumber))
         
+        
+        
         guard let url = URL.updateNoteLastSeen() else { return }
         
         var urlRequest = URLRequest(url: url)

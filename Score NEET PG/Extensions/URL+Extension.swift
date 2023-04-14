@@ -91,6 +91,14 @@ extension URL {
         return URL(string: "\(K.baseURL)grandtest/getsubjectslist/")
     }
     
+    static func getQBStep1SubjectTests() -> URL? {
+        return URL(string: "https://usmle-backend.mbbscare.in/grandtest/getsubjectslist/")
+    }
+    
+    static func getQBStep2SubjectTests() -> URL? {
+        return URL(string: "https://usmle-2-backend.mbbscare.in/grandtest/getsubjectslist/")
+    }
+    
     static func getGtList(userId: String, gtId: String) -> URL? {
         return URL(string: "\(K.baseURL)progress/getusergtlist/\(userId)/\(gtId)")
     }
@@ -143,6 +151,10 @@ extension URL {
         return URL(string: "\(K.baseURL)progress/getnotesbindata/\(userId)/\(subjectId)/")
     }
     
+    static func getAudioMantraQuestionList(userId: String, subjectId: String) -> URL? {
+        return URL(string: "\(K.baseURL)progress/getaudiosbindata/\(userId)/\(subjectId)")
+    }
+    
     static func getNotesOfSubjectList(subjectId: String) -> URL? {
         return URL(string: "\(K.baseURL)data/getnotesofsubject/\(subjectId)")
     }
@@ -153,6 +165,10 @@ extension URL {
     
     static func updateNoteLastSeen() -> URL? {
         return URL(string: "\(K.baseURL)progress/updatelastseennotes/")
+    }
+    
+    static func updateAudioMantraLastSeen() -> URL? {
+        return URL(string: "\(K.baseURL)progress/updatelastseenaudio/")
     }
     
     static func topicWiseAnalysis(userId: String, subjectId: String) -> URL? {
@@ -193,5 +209,9 @@ extension URL {
     
     static func noteQuestionReport() -> URL? {
         return URL(string: "\(K.baseURL)progress/report/")
+    }
+    
+    static func audioMantraList(userId: String) -> URL? {
+        return URL(string: "\(K.baseURL)data/getaudiossubjects/\(userId)")
     }
 }

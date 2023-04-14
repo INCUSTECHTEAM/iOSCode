@@ -50,6 +50,8 @@ class GtQuizViewModel: ObservableObject {
     @Published var gtQuizDataModel : GtQuizDataModel = GtQuizDataModel()
     let gtQuizResource: GtQuizResource = GtQuizResource()
     
+    var totalTime = K.byPassBaseURL.isEmpty ? 180 : 50
+    
     //MARK: FUNCTIONS
     
     func progress() {
@@ -68,7 +70,7 @@ class GtQuizViewModel: ObservableObject {
                     if let response {
                         self?.gtQuizDataModel.totalTime = (response.first?.timeTook ?? 0)
                         self?.gtQuizDataModel.gtTimerData = response
-                        self?.gtQuizDataModel.timeRemaining = 180 - (response.first?.timeTook ?? 0)
+                        self?.gtQuizDataModel.timeRemaining = self!.totalTime - (response.first?.timeTook ?? 0)
                     }
                 }
             case .failure(let error):
@@ -222,7 +224,7 @@ class GtQuizViewModel: ObservableObject {
     
     func updateTime(completion: @escaping () -> Void) {
         gtQuizDataModel.isLoading = true
-        let request = QuizCompleteRequest(completed: false, time_took: (180 - gtQuizDataModel.timeRemaining))
+        let request = QuizCompleteRequest(completed: false, time_took: (totalTime - gtQuizDataModel.timeRemaining))
         
         gtQuizResource.completeQuiz(gtId: gtQuizDataModel.gtId, request: request) { [weak self] (result) in
             self?.gtQuizDataModel.isLoading = false
@@ -243,7 +245,7 @@ class GtQuizViewModel: ObservableObject {
     
     func completeQuiz(completion: @escaping () -> Void) {
         gtQuizDataModel.isLoading = true
-        let request = QuizCompleteRequest(completed: true, time_took: (180 - gtQuizDataModel.timeRemaining))
+        let request = QuizCompleteRequest(completed: true, time_took: (totalTime - gtQuizDataModel.timeRemaining))
         
         gtQuizResource.completeQuiz(gtId: gtQuizDataModel.gtId, request: request) { [weak self] (result) in
             self?.gtQuizDataModel.isLoading = false

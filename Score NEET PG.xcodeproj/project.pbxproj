@@ -196,6 +196,15 @@
 		AFF9D557293A113E004B8C9B /* QuestionIdsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9D556293A113E004B8C9B /* QuestionIdsResponse.swift */; };
 		AFF9D559293A1B33004B8C9B /* QuestionDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9D558293A1B33004B8C9B /* QuestionDetailResponse.swift */; };
 		AFF9D55C293A76A4004B8C9B /* QuestionUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9D55B293A76A4004B8C9B /* QuestionUpdateRequest.swift */; };
+		B79DE53229E99FA80012A8AF /* TopTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79DE53129E99FA80012A8AF /* TopTabBarView.swift */; };
+		B79DE53429E9A40A0012A8AF /* GrandTestChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79DE53329E9A40A0012A8AF /* GrandTestChildView.swift */; };
+		B79DE53629E9A7960012A8AF /* SubjectTestChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79DE53529E9A7960012A8AF /* SubjectTestChildView.swift */; };
+		B7C8D60829E87A45007E306C /* AudioMantraListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C8D60729E87A45007E306C /* AudioMantraListViewModel.swift */; };
+		B7C8D60A29E87B7D007E306C /* AudioMantraListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C8D60929E87B7D007E306C /* AudioMantraListResponse.swift */; };
+		B7C8D60C29E87CCC007E306C /* AudioMantraCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C8D60B29E87CCC007E306C /* AudioMantraCellView.swift */; };
+		B7C8D60E29E8861E007E306C /* AudioMantraDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C8D60D29E8861E007E306C /* AudioMantraDetailsViewModel.swift */; };
+		B7D2A7E129E86DB6004948D3 /* AudioMantraDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D2A7E029E86DB6004948D3 /* AudioMantraDetailsScreen.swift */; };
+		B7D2A7E329E87500004948D3 /* AudioMantraListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D2A7E229E87500004948D3 /* AudioMantraListScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -387,6 +396,15 @@
 		AFF9D556293A113E004B8C9B /* QuestionIdsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionIdsResponse.swift; sourceTree = "<group>"; };
 		AFF9D558293A1B33004B8C9B /* QuestionDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailResponse.swift; sourceTree = "<group>"; };
 		AFF9D55B293A76A4004B8C9B /* QuestionUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionUpdateRequest.swift; sourceTree = "<group>"; };
+		B79DE53129E99FA80012A8AF /* TopTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarView.swift; sourceTree = "<group>"; };
+		B79DE53329E9A40A0012A8AF /* GrandTestChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrandTestChildView.swift; sourceTree = "<group>"; };
+		B79DE53529E9A7960012A8AF /* SubjectTestChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTestChildView.swift; sourceTree = "<group>"; };
+		B7C8D60729E87A45007E306C /* AudioMantraListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMantraListViewModel.swift; sourceTree = "<group>"; };
+		B7C8D60929E87B7D007E306C /* AudioMantraListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMantraListResponse.swift; sourceTree = "<group>"; };
+		B7C8D60B29E87CCC007E306C /* AudioMantraCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMantraCellView.swift; sourceTree = "<group>"; };
+		B7C8D60D29E8861E007E306C /* AudioMantraDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMantraDetailsViewModel.swift; sourceTree = "<group>"; };
+		B7D2A7E029E86DB6004948D3 /* AudioMantraDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMantraDetailsScreen.swift; sourceTree = "<group>"; };
+		B7D2A7E229E87500004948D3 /* AudioMantraListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMantraListScreen.swift; sourceTree = "<group>"; };
 		E2DD6FE0BD964FCEF5FEE561 /* Pods_Score_NEET_PG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Score_NEET_PG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F093A0D519708B1EC2F75094 /* Pods-Score NEET PG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Score NEET PG.release.xcconfig"; path = "Target Support Files/Pods-Score NEET PG/Pods-Score NEET PG.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -500,6 +518,10 @@
 				AF6DC9F22943CD8200397EE0 /* CustomInlineNavigationBar.swift */,
 				AF6DCA3429475BB600397EE0 /* RecordingPlayerViewWithoutSlider.swift */,
 				AF3719852947872300501B77 /* RecorderBar.swift */,
+				B7C8D60B29E87CCC007E306C /* AudioMantraCellView.swift */,
+				B79DE53129E99FA80012A8AF /* TopTabBarView.swift */,
+				B79DE53329E9A40A0012A8AF /* GrandTestChildView.swift */,
+				B79DE53529E9A7960012A8AF /* SubjectTestChildView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -528,6 +550,7 @@
 				AF7A2D2D2899BEB800E114F9 /* MockQuestion.swift */,
 				81042C7828AE4C4100F0480D /* Subject.swift */,
 				AF0C326728E3425000CA3C71 /* PPT.swift */,
+				B7C8D60929E87B7D007E306C /* AudioMantraListResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -646,6 +669,8 @@
 				AF6280A7297138290082D464 /* SearchHistoryScreen.swift */,
 				AFBD5C33298C3196000ACCF5 /* NotesQuizScreen.swift */,
 				AF39746529955EF700203080 /* CourseSelectionScreen.swift */,
+				B7D2A7E029E86DB6004948D3 /* AudioMantraDetailsScreen.swift */,
+				B7D2A7E229E87500004948D3 /* AudioMantraListScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -676,6 +701,8 @@
 				AF6280A929713CF70082D464 /* SearchHistoryViewModel.swift */,
 				AFBD5C35298C3FD7000ACCF5 /* NotesQuizViewModel.swift */,
 				AF17499D2999510900025C4F /* SubjectsViewModel.swift */,
+				B7C8D60729E87A45007E306C /* AudioMantraListViewModel.swift */,
+				B7C8D60D29E8861E007E306C /* AudioMantraDetailsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -896,16 +923,19 @@
 				819690352892AC8C00FABD79 /* UserDetailsUpdateScreen.swift in Sources */,
 				819690422892B60B00FABD79 /* AuthManager.swift in Sources */,
 				AFF9D5162937CFBE004B8C9B /* MockTestViewModel.swift in Sources */,
+				B7D2A7E329E87500004948D3 /* AudioMantraListScreen.swift in Sources */,
 				AF7A2D2228997D3600E114F9 /* VimeoModel.swift in Sources */,
 				8180B1232894156100B1331F /* PracticeScreen.swift in Sources */,
 				AFF9D54D2939D6E3004B8C9B /* GetUserGtDetailReponse.swift in Sources */,
 				AFE4AF7C28AEA331000A1DF0 /* SubjectsScreen.swift in Sources */,
+				B79DE53429E9A40A0012A8AF /* GrandTestChildView.swift in Sources */,
 				AF7A2D042898442700E114F9 /* SentTextChatView.swift in Sources */,
 				8141B84B2892935400C63589 /* CountryPicker.swift in Sources */,
 				AF7A2D1E2899725000E114F9 /* VideoPlayerScreen.swift in Sources */,
 				AFD09E9A298D9EA800F2FBEF /* QuestionBlockStatus.swift in Sources */,
 				812F68472893E39E000EA342 /* UserSessionKeyChain.swift in Sources */,
 				AF371982294779C700501B77 /* AudioResponse.swift in Sources */,
+				B7C8D60A29E87B7D007E306C /* AudioMantraListResponse.swift in Sources */,
 				AFF9D52E2938735B004B8C9B /* ReviewQuestionsViewModel.swift in Sources */,
 				81042C7928AE4C4100F0480D /* Subject.swift in Sources */,
 				AFD436B0293E5F08007C611A /* TopicAnalysisResponse.swift in Sources */,
@@ -965,6 +995,7 @@
 				813615112893A2C000E7CF46 /* AlertItem.swift in Sources */,
 				AF3719882947875300501B77 /* AudioRecorder.swift in Sources */,
 				AF6280AA29713CF70082D464 /* SearchHistoryViewModel.swift in Sources */,
+				B79DE53629E9A7960012A8AF /* SubjectTestChildView.swift in Sources */,
 				AF6280AC29713E670082D464 /* SearchHistory.swift in Sources */,
 				AFF9D53E2938B477004B8C9B /* LeaderboardResource.swift in Sources */,
 				AFD436A8293C6881007C611A /* TopicScreen.swift in Sources */,
@@ -1004,9 +1035,11 @@
 				AFF9D555293A0F1A004B8C9B /* GtQuizResource.swift in Sources */,
 				AFF9D5332938827B004B8C9B /* MockTestResource.swift in Sources */,
 				AFF9D5222937E479004B8C9B /* CustomProgressView.swift in Sources */,
+				B7C8D60E29E8861E007E306C /* AudioMantraDetailsViewModel.swift in Sources */,
 				8180B125289453DA00B1331F /* ChatBot.swift in Sources */,
 				AF0C326A28E348DC00CA3C71 /* PPTHyfCellView.swift in Sources */,
 				AF6DC9F12943420100397EE0 /* RecordingPlayerView.swift in Sources */,
+				B7C8D60C29E87CCC007E306C /* AudioMantraCellView.swift in Sources */,
 				8141B8252892618300C63589 /* OnboardCardView.swift in Sources */,
 				AF0CAFFC289D67B900B4B58C /* SubscriptionView.swift in Sources */,
 				AF0C326628E1643A00CA3C71 /* PPTListView.swift in Sources */,
@@ -1027,6 +1060,7 @@
 				8141B835289267A700C63589 /* Extension+Color.swift in Sources */,
 				AFF9D52C29386CED004B8C9B /* ReviewQuestionsScreen.swift in Sources */,
 				819E20D42897060E00453BC2 /* PhotoPicker.swift in Sources */,
+				B7D2A7E129E86DB6004948D3 /* AudioMantraDetailsScreen.swift in Sources */,
 				8136150B28930A9400E7CF46 /* KeyChainHelper.swift in Sources */,
 				8180B12C2894F2F300B1331F /* RevisionScreen.swift in Sources */,
 				812016E1289540B0007F61E5 /* SHYFCellView.swift in Sources */,
@@ -1034,6 +1068,7 @@
 				812F68492893E7E7000EA342 /* MainView.swift in Sources */,
 				8141B83828926A0100C63589 /* Modifier.swift in Sources */,
 				AF796EF028A7F17F00B445A7 /* ImagesGridView.swift in Sources */,
+				B7C8D60829E87A45007E306C /* AudioMantraListViewModel.swift in Sources */,
 				812F683D2893B4E4000EA342 /* APIError.swift in Sources */,
 				AFF9D5202937DDA5004B8C9B /* GrandTestLeaderboardViewModel.swift in Sources */,
 				AFF9D5262937EA60004B8C9B /* NotesScreen.swift in Sources */,
@@ -1050,6 +1085,7 @@
 				813615132893AC4400E7CF46 /* Navigation+Extensions.swift in Sources */,
 				AFD436B4293F46F7007C611A /* NoteQuestionUpdateRequest.swift in Sources */,
 				AFD436AA293C6938007C611A /* TopicViewModel.swift in Sources */,
+				B79DE53229E99FA80012A8AF /* TopTabBarView.swift in Sources */,
 				AFF9D553293A0E86004B8C9B /* GtQuizViewModel.swift in Sources */,
 				AF0C326828E3425000CA3C71 /* PPT.swift in Sources */,
 				AFF9D557293A113E004B8C9B /* QuestionIdsResponse.swift in Sources */,
@@ -1184,7 +1220,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Score NEET PG/Score MLE.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Score NEET PG/Preview Content\"";
 				DEVELOPMENT_TEAM = PC6UZ43XDV;
 				ENABLE_PREVIEWS = YES;
@@ -1206,7 +1242,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.2;
+				MARKETING_VERSION = 1.6.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vongo.Score-MLE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1225,7 +1261,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Score NEET PG/Score MLE.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Score NEET PG/Preview Content\"";
 				DEVELOPMENT_TEAM = PC6UZ43XDV;
 				ENABLE_PREVIEWS = YES;
@@ -1247,7 +1283,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.2;
+				MARKETING_VERSION = 1.6.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vongo.Score-MLE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

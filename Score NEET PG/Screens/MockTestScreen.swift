@@ -14,125 +14,101 @@ struct MockTestScreen: View {
     @State private var isPresentedPaymentScreen = false
     @StateObject var storeManager = StoreManager()
     @ObservedObject var inAppPurchase = InAppPurchaseManager.shared
+    @State var selectedTab = 0
+    
+    let tabs: [TopTabObject] = [
+           .init(icon: Image(systemName: "music.note"), title: "Grand Test"),
+           .init(icon: Image(systemName: "film.fill"), title: "PYQs QB"),
+           .init(icon: Image(systemName: "book.fill"), title: "QB Step 1"),
+           .init(icon: Image(systemName: "book.fill"), title: "QB Step 2")
+       ]
+    
+    let nursingTabs: [TopTabObject] = [.init(icon: Image(systemName: "music.note"), title: "Grand Tests"), .init(icon: Image(systemName: "film.fill"), title: "Subject Test")]
+    
+    let uslmeTabs: [TopTabObject] = [.init(icon: Image(systemName: "book.fill"), title: "Practice Test")]
     
     private var courseEnvironment = CourseEnvironment.shared
     
     var body: some View {
-        ZStack {
-            VStack(spacing: 0) {
-                
-                CustomInlineNavigationBar(name: "Mock Test")
-                
+            GeometryReader { geo in
                 VStack(spacing: 0) {
-
-                    TopTabView(tabs: courseEnvironment.checkSelectedCourse() == Courses.USMLESTEP1.rawValue ? [.init(title: "Practice Test")] : mockTestVM.mockTestDataModel.tabs, selectedTab: courseEnvironment.checkSelectedCourse() == Courses.USMLESTEP1.rawValue ? .constant(0) : $mockTestVM.mockTestDataModel.selectedTab)
                     
-                    //Divider()
-                } // HEADER
-                
-                
-                
-                List {
-                    if courseEnvironment.checkSelectedCourse() == Courses.USMLESTEP1.rawValue {
-                        
-                        ForEach(mockTestVM.mockTestDataModel.subjectTests.indices, id: \.self) { index in
-                            SubjectTestCellView(subject: mockTestVM.mockTestDataModel.subjectTests[index], isTrial: index == 0 ? true : false)
-                                .onTapGesture {
-                                    if paymentStatus == false && !(index == 0) {
-                                        isPresentedPaymentScreen = true
-                                    }
-                                }
-                        }
-                        .listRowInsets(.none)
-                        .listRowBackground(Color.backgroundColor)
-                        .listRowSeparator(.hidden)
-                        
-                    } else {
-                        
-                        ForEach(mockTestVM.mockTestDataModel.selectedTab == 0 ? mockTestVM.mockTestDataModel.mockTests.indices : mockTestVM.mockTestDataModel.subjectTests.indices, id: \.self) { index in
-                            if mockTestVM.mockTestDataModel.selectedTab == 0 {
-                                GrandTestCellView(mockTestResponseElement: mockTestVM.mockTestDataModel.mockTests[index], isTrial: index == 0 ? true : false)
-                                    .onTapGesture {
-                                        if paymentStatus == false && !(index == 0) {
-                                            isPresentedPaymentScreen = true
-                                        }
-                                    }
-                                
-                            } else {
-                                SubjectTestCellView(subject: mockTestVM.mockTestDataModel.subjectTests[index], isTrial: index == 0 ? true : false)
-                                    .onTapGesture {
-                                        if paymentStatus == false && !(index == 0) {
-                                            isPresentedPaymentScreen = true
-                                        }
-                                    }
-                                
-                            }
+                    CustomInlineNavigationBar(name: "Mock Test")
+                    
+                    VStack(spacing: 0) {
+                        if courseEnvironment.checkSelectedCourse() == Courses.NEETPG.rawValue {
+                            TopTabBarView(tabs: tabs, geoWidth: geo.size.width, selectedTab: $selectedTab)
+                            
+                            
+                            TabView(selection: $selectedTab,
+                                    content: {
+                                GrandTestChildView(vm: mockTestVM)
+                                    .tag(0)
+                                SubjectTestChildView(vm: mockTestVM, currentScreen: "subject")
+                                    .tag(1)
+                                SubjectTestChildView(vm: mockTestVM, currentScreen: "usmle1")
+                                    .tag(2)
+                                SubjectTestChildView(vm: mockTestVM, currentScreen: "usmle2")
+                                    .tag(3)
+                            })
+                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                            
+                        } else if courseEnvironment.checkSelectedCourse() == Courses.Nursing.rawValue {
+                            
+                            TopTabBarView(tabs: nursingTabs, geoWidth: geo.size.width, selectedTab: $selectedTab)
+                            
+                            
+                            TabView(selection: $selectedTab,
+                                    content: {
+                                GrandTestChildView(vm: mockTestVM)
+                                    .tag(0)
+                                SubjectTestChildView(vm: mockTestVM, currentScreen: "subject")
+                                    .tag(1)
+                            })
+                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                            
+                            
+                        } else if courseEnvironment.checkSelectedCourse() == Courses.USMLESTEP1.rawValue {
+                            
+                            TopTabBarView(tabs: uslmeTabs, geoWidth: geo.size.width, selectedTab: $selectedTab)
+                            
+                            
+                            TabView(selection: $selectedTab,
+                                    content: {
+                                SubjectTestChildView(vm: mockTestVM, currentScreen: "subject")
+                                    .tag(0)
+                            })
+                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                            
+                        } else if courseEnvironment.checkSelectedCourse() == Courses.USMLESTEP2.rawValue {
+                            
+                            TopTabBarView(tabs: uslmeTabs, geoWidth: geo.size.width, selectedTab: $selectedTab)
+                            
+                            
+                            TabView(selection: $selectedTab,
+                                    content: {
+                                SubjectTestChildView(vm: mockTestVM, currentScreen: "subject")
+                                    .tag(0)
+                            })
+                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                             
                         }
-                        .listRowInsets(.none)
-                        .listRowBackground(Color.backgroundColor)
-                        .listRowSeparator(.hidden)
                         
-                        
-                    }
                     
+                    } // HEADER
                     
+                   
+                   
+                    Spacer()
                     
-                }
-                .listStyle(.plain)
-                .id(mockTestVM.mockTestDataModel.refreshCounter)
+                } //: VSTACK
                 .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now()+0.2, execute: {
-                        if courseEnvironment.checkSelectedCourse() == Courses.USMLESTEP1.rawValue {
-                            mockTestVM.getSubjectTests()
-                        } else {
-                            mockTestVM.getUserDetails()
-                            mockTestVM.getSubjectTests()
-                        }
-                        
-                    })
+                    K.byPassBaseURL = ""
                 }
-                
-                
-                
-                Spacer()
-                
-            } //: VSTACK
-            .alert(item: $mockTestVM.alertItem) { alertItem in
-                Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
+                .navigationBarTitleDisplayMode(.inline)
+    
             }
-            .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
-            .navigationBarTitleDisplayMode(.inline)
-            
-            if courseEnvironment.checkSelectedCourse() == Courses.USMLESTEP1.rawValue  {
-                
-                Text("Sorry, No Practice Test Available")
-                    .font(.custom(K.Font.sfUITextRegular, size: 15))
-                    .foregroundColor(.textColor)
-                    .opacity(mockTestVM.mockTestDataModel.subjectTests.isEmpty && mockTestVM.mockTestDataModel.isLoading == false ? 1 : 0)
-                
-            } else {
-                
-                Text("Sorry, No \(mockTestVM.mockTestDataModel.selectedTab == 0 ? "Questions" : "Subject Test") Available")
-                    .font(.custom(K.Font.sfUITextRegular, size: 15))
-                    .foregroundColor(.textColor)
-                    .opacity(mockTestVM.mockTestDataModel.selectedTab == 0 && mockTestVM.mockTestDataModel.mockTests.isEmpty && mockTestVM.mockTestDataModel.isLoading == false ? 1 : mockTestVM.mockTestDataModel.selectedTab == 1 && mockTestVM.mockTestDataModel.subjectTests.isEmpty && mockTestVM.mockTestDataModel.isLoading == false ? 1 : 0)
-            }
-            
-           
-            
-            if self.mockTestVM.mockTestDataModel.isLoading {
-                GeometryReader { proxy in
-                    Loader()
-                        .frame(width: proxy.size.width, height: proxy.size.height, alignment: .center)
-                }
-                .background(Color.black.opacity(0.45).edgesIgnoringSafeArea(.all))
-            }
-            
-        }  //: ZSTACK
-        .fullScreenCover(isPresented: $isPresentedPaymentScreen, content: {
-            PaymentScreen(storeManager: storeManager)
-        })
+        
         
         
     }

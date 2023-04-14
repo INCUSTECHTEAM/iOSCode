@@ -83,6 +83,8 @@ struct CourseSelectionScreen: View {
             url = URL(string: "https://nurse-coach.mbbscare.in/progress/user/\(phoneNumber)/")
         } else if selectedCouse == Courses.USMLESTEP1.rawValue {
             url = URL(string: "https://usmle-backend.mbbscare.in/progress/user/\(phoneNumber)/")
+        } else if selectedCouse == Courses.USMLESTEP2.rawValue {
+            url = URL(string: "https://usmle-2-backend.mbbscare.in/progress/user/\(phoneNumber)/")
         } else {
             url = URL(string: "https://chatbot-backend.mbbscare.in/progress/user/\(phoneNumber)/")
         }
@@ -223,8 +225,34 @@ struct CourseSelectionScreen: View {
                     }
                     .padding()
                     
+                    Button {
+                        CourseEnvironment.shared.set(course: .USMLESTEP2)
+                        updatePaymentStatus()
+                    } label: {
+                        VStack {
+                            Image("capitol")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 80, height: 80)
+                                .foregroundColor(.orangeColor)
+                                .tint(.orangeColor)
+                                .padding(.vertical, 20)
+                                .padding(.horizontal, 20)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(lineWidth: 1)
+                                        
+                                }
+                                
+                            
+                            Text("USMLE STEP 2")
+                        }
+                    }
+                    .padding()
+                    
                 }
                 //.padding()
+                
                 
                 
                 
@@ -232,8 +260,8 @@ struct CourseSelectionScreen: View {
             
             Spacer()
         }
-        .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
         .navigationBarBackButtonHidden(true)
+        .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
     }
 }
 
