@@ -52,7 +52,7 @@ class NoteQuestiosnViewModel: ObservableObject {
     
     func updateIknowOrBookmarked(subjectId: String, isBookmarked: Bool) {
         
-        let data = QuestionIdsStringElement(id: noteQuestionDataModel.questionIds[noteQuestionDataModel.index].id ?? "")
+        let data = QuestionIdsStringElement(id: noteQuestionDataModel.questionIds[noteQuestionDataModel.index].id)
         
         if isBookmarked {
             if !noteQuestionDataModel.bookmarkedQuestions.contains(where: { $0.id == data.id }) {
@@ -135,7 +135,7 @@ class NoteQuestiosnViewModel: ObservableObject {
                         var ids = [QuestionIdsStringElement]()
                         for index in 0..<response.count {
                             let data = response[index].id?.description
-                            ids.append(QuestionIdsStringElement(id: data))
+                            ids.append(QuestionIdsStringElement(id: AnyCodableValue(data ?? "")))
                         }
                         
                         DispatchQueue.main.async {
@@ -207,7 +207,7 @@ class NoteQuestiosnViewModel: ObservableObject {
     
     func getQuestion(subjectId: String) {
         noteQuestionDataModel.isLoading = true
-        guard let url = URL.getNoteQuestionData(subjectId: subjectId, questionId: noteQuestionDataModel.questionIds[noteQuestionDataModel.index].id ?? "") else { return }
+        guard let url = URL.getNoteQuestionData(subjectId: subjectId, questionId: noteQuestionDataModel.questionIds[noteQuestionDataModel.index].id?.stringValue ?? "") else { return }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
         

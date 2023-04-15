@@ -39,16 +39,20 @@ struct SubjectTestChildView: View {
                 }
                 .listStyle(.plain)
                 .task {
-                    if currentScreen == "subject" {
-                        vm.getSubjectTests()
-                    } else if currentScreen == "usmle1" {
-                        //byPassBaseURL is added to use uslme url in neet pg
-                        vm.getQBStep1()
-                        K.byPassBaseURL = K.usmleStep1URL
-                    } else if currentScreen == "usmle2" {
-                        vm.getQBStep2()
-                        K.byPassBaseURL = K.usmleStep2URL
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
+                        if self.currentScreen == "subject" {
+                            self.vm.getSubjectTests()
+                        } else if self.currentScreen == "usmle1" {
+                            //byPassBaseURL is added to use uslme url in neet pg
+                            self.vm.getQBStep1()
+                            K.byPassBaseURL = K.usmleStep1URL
+                        } else if self.currentScreen == "usmle2" {
+                            self.vm.getQBStep2()
+                            K.byPassBaseURL = K.usmleStep2URL
+                        }
                     }
+                    
                     
                 }
                 .onAppear {

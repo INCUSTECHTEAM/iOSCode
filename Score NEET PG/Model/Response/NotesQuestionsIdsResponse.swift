@@ -11,7 +11,7 @@ import Foundation
 struct NotesQuestionsID: Codable {
     var id: Int?
     var bookmarked, known, unknown, questionsList: [QuestionIdsStringElement]?
-    var subjectName, user: Int?
+    var subjectName, user: AnyCodableValue?
 
     enum CodingKeys: String, CodingKey {
         case id, bookmarked, known, unknown

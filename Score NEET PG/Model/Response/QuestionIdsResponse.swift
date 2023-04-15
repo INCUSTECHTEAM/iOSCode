@@ -16,7 +16,7 @@ struct QuestionIDSResponseElement: Codable {
 
 typealias QuestionIDSResponse = [QuestionIDSResponseElement]
 
-struct QuestionIdsStringElement: Codable, Equatable {
-    var id: String?
+struct QuestionIdsStringElement: Codable {
+    var id: AnyCodableValue?
 }
 

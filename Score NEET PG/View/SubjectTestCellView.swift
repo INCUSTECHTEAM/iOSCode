@@ -41,9 +41,9 @@ struct SubjectTestCellView: View {
                         VStack {
                             Text(subject.totalTopics?.description ?? "0")
                                 .foregroundColor(.white)
-                                .font(.custom(K.Font.sfUITextRegular, size: 12))
+                                .font(.custom(K.Font.sfUITextBold, size: 14))
                                 .lineLimit(1)
-                                .minimumScaleFactor(0.8)
+                                .minimumScaleFactor(0.6)
                                 .padding(.all)
                                 .background {
                                     Circle()
@@ -54,7 +54,7 @@ struct SubjectTestCellView: View {
                             Text("Total Topics")
                                 .lineLimit(1)
                                 .foregroundColor(.textColor)
-                                .font(.custom(K.Font.sfUITextRegular, size: 9))
+                                .font(.custom(K.Font.sfUITextRegular, size: 11))
                                 .minimumScaleFactor(0.5)
                         }
                         .onTapGesture {
@@ -72,9 +72,9 @@ struct SubjectTestCellView: View {
                         VStack {
                             Text(subject.totalQuestion?.description ?? "0")
                                 .foregroundColor(.white)
-                                .font(.custom(K.Font.sfUITextRegular, size: 12))
+                                .font(.custom(K.Font.sfUITextBold, size: 14))
                                 .lineLimit(1)
-                                .minimumScaleFactor(0.7)
+                                .minimumScaleFactor(0.6)
                                 .frame(minWidth: 60)
                                 .padding(.all)
                                 .background {
@@ -85,7 +85,7 @@ struct SubjectTestCellView: View {
                             
                             Text("Total MCQs")
                                 .foregroundColor(.textColor)
-                                .font(.custom(K.Font.sfUITextRegular, size: 9))
+                                .font(.custom(K.Font.sfUITextRegular, size: 11))
                                 .minimumScaleFactor(0.5)
                                 .lineLimit(1)
                         }
@@ -112,11 +112,11 @@ struct SubjectTestCellView: View {
     }
 }
 
-/*
+
 struct SubjectTestCellView_Previews: PreviewProvider {
     static var previews: some View {
         let subject = SubjectTestResponseElement(name: "JJ", id: 1)
         SubjectTestCellView(subject: subject)
     }
 }
-*/
+

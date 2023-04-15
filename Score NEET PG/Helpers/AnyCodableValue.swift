@@ -148,3 +148,32 @@ enum AnyCodableValue: Codable {
         }
     }
 }
+
+
+extension AnyCodableValue {
+    init(_ value: String) {
+        self = .string(value)
+    }
+}
+
+
+extension AnyCodableValue: Equatable {
+    static func ==(lhs: AnyCodableValue, rhs: AnyCodableValue) -> Bool {
+        switch (lhs, rhs) {
+        case (.integer(let leftValue), .integer(let rightValue)):
+            return leftValue == rightValue
+        case (.string(let leftValue), .string(let rightValue)):
+            return leftValue == rightValue
+        case (.float(let leftValue), .float(let rightValue)):
+            return leftValue == rightValue
+        case (.double(let leftValue), .double(let rightValue)):
+            return leftValue == rightValue
+        case (.boolean(let leftValue), .boolean(let rightValue)):
+            return leftValue == rightValue
+        case (.null, .null):
+            return true
+        default:
+            return false
+        }
+    }
+}

@@ -33,7 +33,10 @@ struct GrandTestChildView: View {
                 }
                 .listStyle(.plain)
                 .task {
-                    vm.getMockTests()
+                    DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
+                        self.vm.getMockTests()
+                    }
+                    
                 }
             }
             .alert(item: $vm.alertItem) { alertItem in

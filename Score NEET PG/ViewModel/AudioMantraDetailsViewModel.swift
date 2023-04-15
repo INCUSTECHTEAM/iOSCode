@@ -167,7 +167,8 @@ class AudioMantraDetailsViewModel: ObservableObject {
                     var ids = [QuestionIdsStringElement]()
                     for index in 0..<response.count {
                         let data = response[index].id?.description
-                        ids.append(QuestionIdsStringElement(id: data))
+                        
+                        ids.append(QuestionIdsStringElement(id: AnyCodableValue(data ?? "")))
                     }
                     
                     DispatchQueue.main.async {
@@ -205,7 +206,7 @@ class AudioMantraDetailsViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.isLoading = false
         }
-        guard let url = URL.getNoteQuestionData(subjectId: subjectId, questionId: questionIds[index].id ?? "") else { return }
+        guard let url = URL.getNoteQuestionData(subjectId: subjectId, questionId: questionIds[index].id?.stringValue ?? "") else { return }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
         
@@ -248,7 +249,7 @@ class AudioMantraDetailsViewModel: ObservableObject {
     
     func updateIknowOrBookmarked(subjectId: String, isBookmarked: Bool) {
         
-        let data = QuestionIdsStringElement(id: questionIds[index].id ?? "")
+        let data = QuestionIdsStringElement(id: AnyCodableValue(questionIds[index].id?.stringValue ?? ""))
         
         if isBookmarked {
             if !bookmarkedQuestions.contains(where: { $0.id == data.id }) {

@@ -104,6 +104,7 @@ struct MockTestScreen: View {
                 } //: VSTACK
                 .onAppear {
                     K.byPassBaseURL = ""
+                    selectedTab = 0
                 }
                 .navigationBarTitleDisplayMode(.inline)
     

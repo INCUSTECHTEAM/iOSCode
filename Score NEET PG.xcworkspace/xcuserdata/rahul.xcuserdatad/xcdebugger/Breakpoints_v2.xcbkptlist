@@ -62,8 +62,8 @@
             filePath = "Score NEET PG/ViewModel/AudioMantraDetailsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "next(subjectId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -72,14 +72,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6A0D5A39-EF43-4664-8F33-267138DBF60C"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Score NEET PG/ViewModel/AudioMantraDetailsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "getQuestion(subjectId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -88,16 +88,110 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "B21EBEEB-E457-48A1-BA72-A010B5442BFE"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Score NEET PG/ViewModel/AudioMantraDetailsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "getSubjectQuestionList(subjectId:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "737048BC-AF42-4A5D-8FC5-5636C710F4C2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Score NEET PG/ViewModel/AudioMantraDetailsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "getSubjectQuestions(subjectId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "94601C98-6921-498C-AF7B-FDC5F830631F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Score NEET PG/ViewModel/AudioMantraDetailsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "getSubjectQuestions(subjectId:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "94601C98-6921-498C-AF7B-FDC5F830631F - fa4945097c966400"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Score_NEET_PG.AudioMantraDetailsViewModel.getSubjectQuestions(subjectId: Swift.String) -&gt; ()"
+                  moduleName = "Score NEET PG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rahul/Desktop/Score-NEET-PG/Score%20NEET%20PG/ViewModel/AudioMantraDetailsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "1516">
+               </Location>
+               <Location
+                  uuid = "94601C98-6921-498C-AF7B-FDC5F830631F - ba721fbd9dc78f32"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Result&lt;Swift.Optional&lt;Swift.Array&lt;Score_NEET_PG.NotesQuestionsID&gt;&gt;, Score_NEET_PG.APIError&gt;) -&gt; () in Score_NEET_PG.AudioMantraDetailsViewModel.getSubjectQuestions(subjectId: Swift.String) -&gt; ()"
+                  moduleName = "Score NEET PG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rahul/Desktop/Score-NEET-PG/Score%20NEET%20PG/ViewModel/AudioMantraDetailsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "348">
+               </Location>
+               <Location
+                  uuid = "94601C98-6921-498C-AF7B-FDC5F830631F - 4d3ed050245a5d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #2 (Swift.Result&lt;Swift.Optional&lt;Swift.Array&lt;Score_NEET_PG.NotesQuestionsID&gt;&gt;, Score_NEET_PG.APIError&gt;) -&gt; () in Score_NEET_PG.AudioMantraDetailsViewModel.getSubjectQuestions(subjectId: Swift.String) -&gt; ()"
+                  moduleName = "Score NEET PG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rahul/Desktop/Score-NEET-PG/Score%20NEET%20PG/ViewModel/AudioMantraDetailsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "94601C98-6921-498C-AF7B-FDC5F830631F - 245d8f0be49c4bd0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Swift.MainActor () -&gt; () in closure #2 (Swift.Result&lt;Swift.Optional&lt;Swift.Array&lt;Score_NEET_PG.NotesQuestionsID&gt;&gt;, Score_NEET_PG.APIError&gt;) -&gt; () in Score_NEET_PG.AudioMantraDetailsViewModel.getSubjectQuestions(subjectId: Swift.String) -&gt; ()"
+                  moduleName = "Score NEET PG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rahul/Desktop/Score-NEET-PG/Score%20NEET%20PG/ViewModel/AudioMantraDetailsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "176">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

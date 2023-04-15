@@ -20,7 +20,6 @@ struct SubjectMockTestListScreen: View {
                 HStack {
                     Button {
                         presentationMode.wrappedValue.dismiss()
-                        K.byPassBaseURL = ""
                     } label: {
                         Image(systemName: "chevron.left")
                             .foregroundColor(.white)
