@@ -57,7 +57,6 @@
 		8180B13028950A4100B1331F /* RightWrongQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8180B12F28950A4100B1331F /* RightWrongQuestion.swift */; };
 		819690352892AC8C00FABD79 /* UserDetailsUpdateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819690342892AC8C00FABD79 /* UserDetailsUpdateScreen.swift */; };
 		819690372892B0DC00FABD79 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819690362892B0DC00FABD79 /* Extension+View.swift */; };
-		819690392892B3E400FABD79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 819690382892B3E400FABD79 /* GoogleService-Info.plist */; };
 		8196903C2892B4CF00FABD79 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8196903B2892B4CF00FABD79 /* FirebaseAnalytics */; };
 		8196903E2892B4CF00FABD79 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8196903D2892B4CF00FABD79 /* FirebaseAuth */; };
 		819690402892B4CF00FABD79 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8196903F2892B4CF00FABD79 /* FirebaseFirestore */; };
@@ -196,6 +195,7 @@
 		AFF9D557293A113E004B8C9B /* QuestionIdsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9D556293A113E004B8C9B /* QuestionIdsResponse.swift */; };
 		AFF9D559293A1B33004B8C9B /* QuestionDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9D558293A1B33004B8C9B /* QuestionDetailResponse.swift */; };
 		AFF9D55C293A76A4004B8C9B /* QuestionUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9D55B293A76A4004B8C9B /* QuestionUpdateRequest.swift */; };
+		B717596A2C8F571D001FDF2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B71759692C8F571D001FDF2F /* GoogleService-Info.plist */; };
 		B79DE53229E99FA80012A8AF /* TopTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79DE53129E99FA80012A8AF /* TopTabBarView.swift */; };
 		B79DE53429E9A40A0012A8AF /* GrandTestChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79DE53329E9A40A0012A8AF /* GrandTestChildView.swift */; };
 		B79DE53629E9A7960012A8AF /* SubjectTestChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79DE53529E9A7960012A8AF /* SubjectTestChildView.swift */; };
@@ -258,7 +258,6 @@
 		8180B12F28950A4100B1331F /* RightWrongQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightWrongQuestion.swift; sourceTree = "<group>"; };
 		819690342892AC8C00FABD79 /* UserDetailsUpdateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsUpdateScreen.swift; sourceTree = "<group>"; };
 		819690362892B0DC00FABD79 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
-		819690382892B3E400FABD79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		819690412892B60B00FABD79 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		819690432892BC1F00FABD79 /* Score MLE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Score MLE.entitlements"; sourceTree = "<group>"; };
 		819E20D12896652300453BC2 /* AWSManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSManager.swift; sourceTree = "<group>"; };
@@ -396,6 +395,7 @@
 		AFF9D556293A113E004B8C9B /* QuestionIdsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionIdsResponse.swift; sourceTree = "<group>"; };
 		AFF9D558293A1B33004B8C9B /* QuestionDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailResponse.swift; sourceTree = "<group>"; };
 		AFF9D55B293A76A4004B8C9B /* QuestionUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionUpdateRequest.swift; sourceTree = "<group>"; };
+		B71759692C8F571D001FDF2F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B79DE53129E99FA80012A8AF /* TopTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarView.swift; sourceTree = "<group>"; };
 		B79DE53329E9A40A0012A8AF /* GrandTestChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrandTestChildView.swift; sourceTree = "<group>"; };
 		B79DE53529E9A7960012A8AF /* SubjectTestChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTestChildView.swift; sourceTree = "<group>"; };
@@ -448,11 +448,11 @@
 		8141B81228925F5B00C63589 /* Score NEET PG */ = {
 			isa = PBXGroup;
 			children = (
+				B71759692C8F571D001FDF2F /* GoogleService-Info.plist */,
 				AFEF24E62991F86A006B2D73 /* Manager */,
 				AFF9D531293881B0004B8C9B /* Resource */,
 				AF7A2D252899989800E114F9 /* typingDot.gif */,
 				819690432892BC1F00FABD79 /* Score MLE.entitlements */,
-				819690382892B3E400FABD79 /* GoogleService-Info.plist */,
 				AF0CAFFD289D8E0B00B4B58C /* ViewModel */,
 				8141B836289269EF00C63589 /* Helpers */,
 				8141B8332892672500C63589 /* Extensions */,
@@ -855,7 +855,6 @@
 				81AD930E2897AB5E0084E8E6 /* SFUIText-Semibold.ttf in Resources */,
 				81AD930A2897AB5E0084E8E6 /* SFUIText-Heavy.ttf in Resources */,
 				81AD930C2897AB5E0084E8E6 /* SFUIText-Medium.ttf in Resources */,
-				819690392892B3E400FABD79 /* GoogleService-Info.plist in Resources */,
 				81AD93042897AB5E0084E8E6 /* SFUIText-BoldItalic.ttf in Resources */,
 				AF7A2D1A2899060B00E114F9 /* Launch Screen.storyboard in Resources */,
 				81AD930D2897AB5E0084E8E6 /* SFUIText-RegularItalic.ttf in Resources */,
@@ -866,6 +865,7 @@
 				81AD930B2897AB5E0084E8E6 /* SFUIText-LightItalic.ttf in Resources */,
 				81AD93082897AB5E0084E8E6 /* SFUIText-Regular.ttf in Resources */,
 				81AD93052897AB5E0084E8E6 /* SFUIText-MediumItalic.ttf in Resources */,
+				B717596A2C8F571D001FDF2F /* GoogleService-Info.plist in Resources */,
 				812016E928957D89007F61E5 /* ScoreFontBold.ttf in Resources */,
 				81AD92F82897A8950084E8E6 /* SFUIText-Bold.ttf in Resources */,
 			);

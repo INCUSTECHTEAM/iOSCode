@@ -191,6 +191,99 @@
                   endingLineNumber = "94"
                   offsetFromSymbolStart = "176">
                </Location>
+               <Location
+                  uuid = "94601C98-6921-498C-AF7B-FDC5F830631F - fa4945097c966400"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Score_NEET_PG.AudioMantraDetailsViewModel.getSubjectQuestions(subjectId: Swift.String) -&gt; ()"
+                  moduleName = "Score NEET PG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rahul/Desktop/Score-NEET-PG/Score%20NEET%20PG/ViewModel/AudioMantraDetailsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "1304">
+               </Location>
+               <Location
+                  uuid = "94601C98-6921-498C-AF7B-FDC5F830631F - ba721fbd9dc78f32"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Result&lt;Swift.Optional&lt;Swift.Array&lt;Score_NEET_PG.NotesQuestionsID&gt;&gt;, Score_NEET_PG.APIError&gt;) -&gt; () in Score_NEET_PG.AudioMantraDetailsViewModel.getSubjectQuestions(subjectId: Swift.String) -&gt; ()"
+                  moduleName = "Score NEET PG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rahul/Desktop/Score-NEET-PG/Score%20NEET%20PG/ViewModel/AudioMantraDetailsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "292">
+               </Location>
+               <Location
+                  uuid = "94601C98-6921-498C-AF7B-FDC5F830631F - 245d8f0be49c4bd0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Swift.MainActor () -&gt; () in closure #2 (Swift.Result&lt;Swift.Optional&lt;Swift.Array&lt;Score_NEET_PG.NotesQuestionsID&gt;&gt;, Score_NEET_PG.APIError&gt;) -&gt; () in Score_NEET_PG.AudioMantraDetailsViewModel.getSubjectQuestions(subjectId: Swift.String) -&gt; ()"
+                  moduleName = "Score NEET PG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rahul/Desktop/Score-NEET-PG/Score%20NEET%20PG/ViewModel/AudioMantraDetailsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "148">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1B85D2AA-7377-4352-8EBA-25615C33AC53"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Score NEET PG/Utilities/AuthManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "startAuth(phoneNumber:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1B85D2AA-7377-4352-8EBA-25615C33AC53 - 7856d69138c04962"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Score_NEET_PG.AuthManager.startAuth(phoneNumber: Swift.String, completion: (Swift.Bool, Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Score NEET PG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rahul/Desktop/Score-NEET-PG/Score%20NEET%20PG/Utilities/AuthManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "1B85D2AA-7377-4352-8EBA-25615C33AC53 - 7856d69138c04962"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Score_NEET_PG.AuthManager.startAuth(phoneNumber: Swift.String, completion: (Swift.Bool, Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Score NEET PG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rahul/Desktop/Score-NEET-PG/Score%20NEET%20PG/Utilities/AuthManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "192">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
